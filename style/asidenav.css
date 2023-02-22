@@ -3,7 +3,7 @@
     --second: #92b0f7c5;
     --text-color:black;
     --bg: white;
-  }
+    }
 
 * {
     margin: 0;
@@ -12,33 +12,19 @@
     outline: none;
     border: none;
     text-decoration: none;
-    font-family: 'Figtree';
-}
-.active {
-    padding: 8px;
-    margin-right: -5px;
-    background-color: #fff;
-    border-radius: 10px;
 }
 
 body {
     background-color:var(--bg);
 }
 
-/* awal hamburger menu (navbar) */
-.nav-profile .hamburger-menu{
+.nav-profile{
     height: 50px;
     width: 100%;
-    position: fixed;
+    position: flex;
     background-color: var(--second);
-    box-shadow: 1px 2px 5px #888888;
-}
-
-.nav-profile .hamburger-menu img {
-    padding: 5px;
-    margin-left: 30px;
-    margin-top: 5px;
-
+    box-shadow: 1px 2px 5px #9a9999d1;
+    justify-content: space-between;
 }
 
 .nav-profile .profile {
@@ -46,6 +32,14 @@ body {
     right: 20px;
     position: fixed;
 }
+
+.nav-profile .cari {
+    top: 15px;
+    right: 20px;
+    position: fixed;
+    justify-content: space-between;
+}
+
 .logo img {
     height: 135px;
     width: 135px;
@@ -62,74 +56,40 @@ body {
 
 .navbar .sidebar {
     height: 100%;
-    width: 210px;
-    left: 0;
     background-color: var(--primary);
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
     position: fixed;
-    transition: 0.3s;
     z-index: 99;
 }
-
-.navbar .sidebar.active {
-    left: -100%;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
+}
 
 li {
-    margin-top: 20px;
+    margin-top: 35px;
     margin-left: 35px;
 }
 
 li a {
     text-decoration: none;
-    color: rgb(68, 56, 56);
+    color: var(--text-color);
 }
 
-li :hover {
-    color: rgb(255, 255, 255);
-}
 
 .logout a {
-    color: #000;
+    color: var(--text-color);
     position: absolute;
     bottom: 35px;
     left: 35px;
 }
 
 .logout :hover {
-    color: rgb(255, 255, 255);
+    color: var(--bg);
 }
-/* akhir sidebar */
-
-
-
-
-/* .tabel .content.active {
-    margin-left:220px;
-} */
-
-
-
-
-
-
-/* laptop */
-@media (max-width: 1366px) {
-    html {
-        font-size: 100%;
-    }
-}
-
-/* Tablet */
 @media (max-width: 758px) {
     html {
         font-size: 85%;
@@ -148,8 +108,6 @@ li :hover {
         left: 0;
     }
 }
-
-/* Mobile Phone */
 @media (max-width: 450px) {
     html {
         font-size: 75%;
