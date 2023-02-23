@@ -1,6 +1,6 @@
 :root{
-  --head:#A8E6CF;
-  --child:#DCEDC1;
+  --head:#968C83;
+  --child:#D6D2C4;
   --text:black;
 }
 *{
@@ -11,7 +11,7 @@
 h2{
   margin-top: 5%;
   text-align: center;
-  margin-left: 20%;
+  margin-left: 10%;
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;

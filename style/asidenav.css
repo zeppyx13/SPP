@@ -7,8 +7,8 @@
     src: url('../assets/font/Montserrat-VariableFont_wght.ttf');
 }
 :root {
-    --primary:#A8E6CF;
-    --second: #DCEDC1;
+    --primary:#968C83;
+    --second: #D6D2C4;
     --text-color:black;
     --bg: white;
     }
