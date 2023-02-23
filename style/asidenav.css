@@ -1,11 +1,20 @@
+@font-face {
+    font-family: 'Teko';
+    src: url('../assets/font/Teko-Bold.ttf');
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/font/Montserrat-VariableFont_wght.ttf');
+}
 :root {
-    --primary:#94B3FD;
-    --second: #92b0f7c5;
+    --primary:#A8E6CF;
+    --second: #DCEDC1;
     --text-color:black;
     --bg: white;
     }
 
 * {
+    font-family: 'Montserrat';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -48,14 +57,26 @@ body {
     margin-left: 35px;
     margin-top: 50px;
 }
-.logo p {
+
+.logo .a1 {
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 30%;
+    margin-top: 20%;
+    text-align: center;
+    font-family: 'Teko';
+}
+.logo .a1 p {
+    float: right;
     margin-bottom: 10px;
     text-align: center;
-    margin-left: 35px;
+    font-family: 'Teko';
+
 }
 
 .navbar .sidebar {
     height: 100%;
+    width: 18%;
     background-color: var(--primary);
     display: flex;
     flex-direction: column;
@@ -78,7 +99,9 @@ li a {
     text-decoration: none;
     color: var(--text-color);
 }
-
+li a:hover {
+    color: white;
+  }
 
 .logout a {
     color: var(--text-color);

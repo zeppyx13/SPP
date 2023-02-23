@@ -15,14 +15,15 @@ $nama = $_SESSION['nama'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="sidebar">
             <div class="logo">
-                <img src="../assets/img/ti.png">
+                <h1 class="a1">MY-<p>SPP</p>
+                </h1>
             </div>
             <div class="isi">
                 <ul>
@@ -57,7 +58,7 @@ $nama = $_SESSION['nama'];
                     </li>
                     <li>
                         <a href="">
-                            <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px;">
+                            <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
                             <b>History Transaksi</b>
                         </a>
                     </li>
@@ -100,11 +101,13 @@ $nama = $_SESSION['nama'];
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Header 1</th>
-                        <th>Header 2</th>
-                        <th>Header 3</th>
-                        <th>Header 4</th>
-                        <th>Header 5</th>
+                        <th>No</th>
+                        <th>Nama siswa</th>
+                        <th>Kelas</th>
+                        <th>Angkatan</th>
+                        <th>Tarif</th>
+                        <th>tanggal bayar</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,70 +117,10 @@ $nama = $_SESSION['nama'];
                         <td>Content 1</td>
                         <td>Content 1</td>
                         <td>Content 1</td>
+                        <td>Content 1</td>
+                        <td><a href="http://"><button>Bayar</button></a></td>
                     </tr>
-                    <tr>
-                        <td>Content 2</td>
-                        <td>Content 2</td>
-                        <td>Content 2</td>
-                        <td>Content 2</td>
-                        <td>Content 2</td>
-                    </tr>
-                    <tr>
-                        <td>Content 3</td>
-                        <td>Content 3</td>
-                        <td>Content 3</td>
-                        <td>Content 3</td>
-                        <td>Content 3</td>
-                    </tr>
-                    <tr>
-                        <td>Content 4</td>
-                        <td>Content 4</td>
-                        <td>Content 4</td>
-                        <td>Content 4</td>
-                        <td>Content 4</td>
-                    </tr>
-                    <tr>
-                        <td>Content 5</td>
-                        <td>Content 5</td>
-                        <td>Content 5</td>
-                        <td>Content 5</td>
-                        <td>Content 5</td>
-                    </tr>
-                    <tr>
-                        <td>Content 6</td>
-                        <td>Content 6</td>
-                        <td>Content 6</td>
-                        <td>Content 6</td>
-                        <td>Content 6</td>
-                    </tr>
-                    <tr>
-                        <td>Content 7</td>
-                        <td>Content 7</td>
-                        <td>Content 7</td>
-                        <td>Content 7</td>
-                        <td>Content 7</td>
-                    </tr>
-                    <tr>
-                        <td>Content 8</td>
-                        <td>Content 8</td>
-                        <td>Content 8</td>
-                        <td>Content 8</td>
-                        <td>Content 8</td>
-                    </tr>
-                    <tr>
-                        <td>Content 9</td>
-                        <td>Content 9</td>
-                        <td>Content 9</td>
-                        <td>Content 9</td>
-                        <td>Content 9</td>
-                    </tr>
-                    <tr>
-                        <td>Content 10</td>
-                        <td>Content 10</td>
-                        <td>Content 10</td>
-                        <td>Content 10</td>
-                        <td>Content 10</td>
-                    </tr>
+
                 <tbody>
             </table>
         </div>
