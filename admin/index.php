@@ -105,17 +105,19 @@ $no = 1;
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama siswa</th>
+                        <th>NISN</th>
+                        <th>NIS</th>
+                        <th>Nama Siswa</th>
                         <th>Kelas</th>
-                        <th>Angkatan</th>
-                        <th>Tarif</th>
-                        <th>tanggal bayar</th>
+                        <th>Alamat</th>
+                        <th>No telp</th>
+                        <th>Nominal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td>Content 1</td>
                         <td>Content 1</td>
                         <td>Content 1</td>
                         <td>Content 1</td>
