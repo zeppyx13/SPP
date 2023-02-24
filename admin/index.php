@@ -5,6 +5,8 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
+$query = "SELECT * FROM";
+$no = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">

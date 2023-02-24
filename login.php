@@ -25,13 +25,9 @@ session_start();
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
-				<div class="overlay-panel overlay-left">
-					<h1>Welcome Back!</h1>
-					<p>To keep connected with us please login with your personal info</p>
-					<button name="login" type="submit" class="ghost" id="signIn">Sign In</button>
-				</div>
 				<div class="overlay-panel overlay-right">
-					<img style="max-width: 100%; max-height: 100%;" src="assets/img/ti.png" alt="logo Ti">
+					<img class="gbr" src="assets/img/ti.png" alt="">
+					<p class="tulisan">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius fuga repellat dolores necessitatibus earum architecto veniam libero reiciendis commodi, pariatur voluptatem quasi nostrum consequatur ratione maiores ad aspernatur assumenda! Nulla.</p>
 				</div>
 			</div>
 		</div>
