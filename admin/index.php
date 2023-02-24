@@ -1,11 +1,13 @@
 <?php
 session_start();
+require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM";
+$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
+$data = query($query);
 $no = 1;
 ?>
 <!DOCTYPE html>
@@ -116,17 +118,20 @@ $no = 1;
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td>Content 1</td>
-                        <td><a href="http://"><button>Bayar</button></a></td>
-                    </tr>
-
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $row) : ?>
+                        <tr>
+                            <td><?= $row["NISN"] ?></td>
+                            <td><?= $row["Nis"] ?></td>
+                            <td><?= $row["Nama_Siswa"] ?></td>
+                            <td><?= $row["Kelas"] ?></td>
+                            <td><?= $row["Alamat"] ?></td>
+                            <td><?= $row["Tlp"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
+                            <td><a href="http://"><button>Bayar</button></a></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 <tbody>
             </table>
         </div>
