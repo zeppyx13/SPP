@@ -84,12 +84,14 @@ $no = 1;
             </li>
             <li>
                 <div class="profile">
-                    <span style="float:left; margin-top:5px;">
-                        <p>Hai,<b> <?= $nama ?></b></p>
-                    </span>
+                    <div class="nama">
+                        <span style="float:left; margin-top:5px;">
+                            <p>Hai,<b> <?= $nama ?></b></p>
+                        </span>
+                    </div>
                     <span>
                         <a href="#" id="profile-menu">
-                            <img style="padding-left:20px; max-width: 50px; max-height: 35px; " src="../assets/img/user.jpg">
+                            <img class="gbr" src="../assets/img/user.jpg">
                         </a>
                     </span>
                 </div>

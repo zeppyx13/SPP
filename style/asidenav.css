@@ -28,7 +28,7 @@ body {
 }
 
 .nav-profile{
-    height: 50px;
+    height: 70px;
     width: 100%;
     position: flex;
     background-color: var(--second);
@@ -41,6 +41,19 @@ body {
     right: 20px;
     position: fixed;
 }
+.nav-profile .profile .nama {
+    margin-top: 15px;
+    float: left;
+}
+
+img.gbr{
+    margin-top: 5px;
+    margin-left: 20px;
+    max-width: 50px; 
+    max-height: 50px;
+    border-radius: 100%;
+}
+
 
 .nav-profile .cari {
     top: 15px;

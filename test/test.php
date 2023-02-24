@@ -5,6 +5,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
+$query = ""
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +87,7 @@ $nama = $_SESSION['nama'];
                     </span>
                     <span>
                         <a href="#" id="profile-menu">
-                            <img style="padding-left:20px; max-width: 50px; max-height: 35px; " src="../assets/img/user.jpg">
+                            <img style="padding-left:20px; max-width: 50px; max-height: px; " class="prof" src="../assets/img/user.jpg">
                         </a>
                     </span>
                 </div>
