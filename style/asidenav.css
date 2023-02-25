@@ -115,6 +115,10 @@ li a {
 li a:hover {
     color: white;
   }
+li a b.active  {
+    fill: white;
+    color: white !important;
+  }
 
 .logout a {
     color: var(--text-color);

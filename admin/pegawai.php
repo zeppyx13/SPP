@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
+$query = "SELECT * FROM petugas";
 $data = query($query);
 $no = 1;
 ?>
@@ -34,7 +34,7 @@ $no = 1;
                     <li>
                         <a href="./">
                             <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b class="active">Home</b>
+                            <b>Home</b>
                         </a>
                     </li>
                     <li>
@@ -44,8 +44,8 @@ $no = 1;
                     </li>
                     <li>
                         <a href="./pegawai.php">
-                            <img src="../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b>Tabel Petugas</b>
+                            <img src=" ../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
+                            <b class="active">Tabel Petugas</b>
                         </a>
                     </li>
                     <li>
@@ -99,6 +99,37 @@ $no = 1;
                 </div>
             </li>
         </ul>
+    </div>
+
+    <div class="table">
+        <h2>Data Pegawai</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>NIP</th>
+                        <th>Nama_Petugas</th>
+                        <th>No telp</th>
+                        <th>Alamat</th>
+                        <th>Jabatan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $row) : ?>
+                        <tr>
+                            <td><?= $row["NIP"] ?></td>
+                            <td><?= $row["Nama_Petugas"] ?></td>
+                            <td><?= $row["tlp"] ?></td>
+                            <td><?= $row["Alamat"] ?></td>
+                            <td><?= $row["Jabatan"] ?></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
     </div>
 
     <script src="p.js"></script>
