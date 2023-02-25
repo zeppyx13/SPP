@@ -115,9 +115,9 @@ li a {
 li a:hover {
     color: white;
   }
-li a b.active  {
-    fill: white;
-    color: white !important;
+li a.active  {
+    fill:  var(--bg) !important;
+    color: var(--bg) !important;
   }
 
 .logout a {

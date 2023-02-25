@@ -43,9 +43,9 @@ $no = 1;
                         </a>
                     </li>
                     <li>
-                        <a href="./pegawai.php">
+                        <a class="active" href="./pegawai.php">
                             <img src=" ../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b class="active">Tabel Petugas</b>
+                            <b>Tabel Petugas</b>
                         </a>
                     </li>
                     <li>

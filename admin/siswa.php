@@ -38,8 +38,8 @@ $no = 1;
                         </a>
                     </li>
                     <li>
-                        <a href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b class="active">Tabel Siswa</b>
+                        <a class="active" href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
+                            <b>Tabel Siswa</b>
                         </a>
                     </li>
                     <li>

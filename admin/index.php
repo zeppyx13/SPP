@@ -32,9 +32,9 @@ $no = 1;
             <div class="isi">
                 <ul>
                     <li>
-                        <a href="./">
+                        <a class="active" href="./">
                             <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b class="active">Home</b>
+                            <b>Home</b>
                         </a>
                     </li>
                     <li>
