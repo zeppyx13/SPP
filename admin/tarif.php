@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
+$query = "SELECT * FROM tarif;";
 $data = query($query);
 $no = 1;
 ?>
@@ -19,7 +19,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
-    <title>Dashboard || Home</title>
+    <title>Dashboard || Tarif</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@ $no = 1;
             <div class="isi">
                 <ul>
                     <li>
-                        <a class="active" href="./">
+                        <a href="./">
                             <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
                             <b>Home</b>
                         </a>
@@ -49,7 +49,7 @@ $no = 1;
                         </a>
                     </li>
                     <li>
-                        <a href="./tarif.php">
+                        <a class="active" href="./tarif.php">
                             <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
                             <b>Tabel SPP</b>
                         </a>
@@ -99,6 +99,32 @@ $no = 1;
                 </div>
             </li>
         </ul>
+    </div>
+
+    <div class="table">
+        <h2>Data Tarif</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Angkatan</th>
+                        <th>Nominal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $row) : ?>
+                        <tr>
+                            <td><?= $row["Angkatan"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
+                            <td><a href="http://"><button>Bayar</button></a></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
     </div>
 
     <script src="p.js"></script>

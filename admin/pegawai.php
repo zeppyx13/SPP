@@ -19,7 +19,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
-    <title>Dashboard</title>
+    <title>Dashboard || pegawai</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@ $no = 1;
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./tarif.php">
                             <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
                             <b>Tabel SPP</b>
                         </a>
