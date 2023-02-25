@@ -119,7 +119,11 @@ li a.active  {
     fill:  var(--bg) !important;
     color: var(--bg) !important;
   }
-
+li a svg{
+    margin-right:5px;
+    width:15px; 
+    height:15px; 
+}
 .logout a {
     color: var(--text-color);
     position: absolute;
