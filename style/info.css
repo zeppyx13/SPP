@@ -1,5 +1,6 @@
 body{
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 .container{
     justify-content: center;
@@ -28,10 +29,12 @@ body{
     text-align: center;
     box-shadow: 5px 5px 5px #9a9999d1;
     color: rgb(0, 0, 0);
-    padding: 80px;
+    padding-top: 20px;
     margin-right: 20px;
     margin-bottom: 70%;
     border-radius: 20px;
+    height: 33%;
+    width: 33%;
 }
 .container .wrapper .info-1{
     background-color:bisque;
@@ -41,4 +44,8 @@ body{
 }
 .container .wrapper .info-3{
     background-color:beige;
+}
+h2.no{
+    font-size: xx-large;
+    margin-top: 15%;
 }

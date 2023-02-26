@@ -62,21 +62,11 @@ img.gbr{
     justify-content: space-between;
 }
 
-.logo img {
-    height: 135px;
-    width: 135px;
-    margin-bottom: 10px;
-    position: relative;
-    margin-left: 35px;
-    margin-top: 50px;
-}
-
 .logo .a1 {
     float: left;
-    font-size:50px;
-    margin-bottom: 5px;
-    margin-left: 15%;
-    margin-top: 2%;
+    font-size:40px;
+    margin-left: 20%;
+    margin-top: 15%;
     text-align: center;
     font-family: 'Teko';
 }
@@ -138,31 +128,25 @@ li a svg{
     html {
         font-size: 85%;
     }
-    .logo img {
-        height: 105px;
-        width: 105px;
-        margin-bottom: 10px;
-        position: relative;
-        margin-left: 35px;
-        margin-top: 80px;
-    }
     .navbar .sidebar {
         height: 100%;
         width: 180px;
         left: 0;
     }
 }
+@media (min-width: 1440px) {
+    html {
+        font-size: 85%;
+    }
+    .navbar .sidebar {
+        height: 100%;
+        width: 10%;
+        left: 0;
+    }
+}
 @media (max-width: 450px) {
     html {
         font-size: 75%;
-    }
-    .logo img {
-        height: 85px;
-        width: 85px;
-        margin-bottom: 10px;
-        position: relative;
-        margin-left: 35px;
-        margin-top: 80px;
     }
     .navbar .sidebar {
         height: 100%;

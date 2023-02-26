@@ -110,13 +110,16 @@ $no = 1;
     <div class="container">
         <div class="wrapper">
             <div class="info info-1">
-                <h3>Jumlah Siswa :<b> 12</b></h3>
+                <h2>Jumlah Siswa :</h2>
+                <h2 class="no"><b> 12</b></h2>
             </div>
             <div class="info info-2">
-                <h3>Jumlah pegawai : <b>12</b></h3>
+                <h2>Jumlah Siswa :</h2>
+                <h2 class="no"><b> 12</b></h2>
             </div>
             <div class="info info-3">
-                <h3>Jumlah Siswa : <b>12</b></h3>
+                <h2>Jumlah Siswa :</h2>
+                <h2 class="no"><b> 12</b></h2>
             </div>
         </div>
     </div>
