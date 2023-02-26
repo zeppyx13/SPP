@@ -37,13 +37,13 @@ body{
     width: 33%;
 }
 .container .wrapper .info-1{
-    background-color:bisque;
+    background:linear-gradient(to right,#8E806A, #C3B091);
 }
 .container .wrapper .info-2{
-    background-color:blanchedalmond;
+    background:linear-gradient(to right,#C3B091, #E4CDA7);
 }
 .container .wrapper .info-3{
-    background-color:beige;
+    background:linear-gradient(to right,#E4CDA7, #ffe6bc);
 }
 h2.no{
     font-size: xx-large;

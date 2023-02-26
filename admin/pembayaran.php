@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
+$query = "SELECT * FROM tarif;";
 $data = query($query);
 $no = 1;
 ?>
@@ -18,8 +18,8 @@ $no = 1;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
-    <link rel="stylesheet" href="../style/info.css">
-    <title>Dashboard || Home</title>
+    <link rel="stylesheet" href="../style/table.css">
+    <title>Dashboard || Tarif</title>
 </head>
 
 <body>
@@ -33,10 +33,8 @@ $no = 1;
                 <div class="isi">
                     <ul>
                         <li>
-                            <a class="active" href="./">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M5 22h14a2 2 0 0 0 2-2v-9a1 1 0 0 0-.29-.71l-8-8a1 1 0 0 0-1.41 0l-8 8A1 1 0 0 0 3 11v9a2 2 0 0 0 2 2zm5-2v-5h4v5zm-5-8.59 7-7 7 7V20h-3v-5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v5H5z" />
-                                </svg>
+                            <a href="./">
+                                <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
                                 <b>Home</b>
                             </a>
                         </li>
@@ -53,13 +51,17 @@ $no = 1;
                         </li>
                         <li>
                             <a href="./tarif.php">
-                                <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
+                                    <path d="M4 21h15.893c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zm0-2v-5h4v5H4zM14 7v5h-4V7h4zM8 7v5H4V7h4zm2 12v-5h4v5h-4zm6 0v-5h3.894v5H16zm3.893-7H16V7h3.893v5z" />
+                                </svg>
                                 <b>Tabel SPP</b>
                             </a>
                         </li>
                         <li>
-                            <a href="./pembayaran.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-bank.svg" style="width:17px; height:17px; margin-right:5px;">
+                            <a class="active" href="./pembayaran.php">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
+                                    <path d="M2 8v4.001h1V18H2v3h16l3 .001V21h1v-3h-1v-5.999h1V8L12 2 2 8zm4 10v-5.999h2V18H6zm5 0v-5.999h2V18h-2zm7 0h-2v-5.999h2V18zM14 8a2 2 0 1 1-4.001-.001A2 2 0 0 1 14 8z" />
+                                </svg>
                                 <b>Pembayaran SPP</b>
                             </a>
                         </li>
@@ -104,25 +106,33 @@ $no = 1;
             </ul>
         </div>
     </aside>
-    <div class="subjudul">
-        <h2>👋Hai, Welcome Back!</h2>
-    </div>
-    <div class="container">
-        <div class="wrapper">
-            <div class="info info-1">
-                <h2>Jumlah Siswa :</h2>
-                <h2 class="no"><b> 12</b></h2>
-            </div>
-            <div class="info info-2">
-                <h2>Jumlah Siswa :</h2>
-                <h2 class="no"><b> 12</b></h2>
-            </div>
-            <div class="info info-3">
-                <h2>Jumlah Siswa :</h2>
-                <h2 class="no"><b> 12</b></h2>
-            </div>
+
+    <div class="table">
+        <h2>Data Tarif</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Angkatan</th>
+                        <th>Nominal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $row) : ?>
+                        <tr>
+                            <td><?= $row["Angkatan"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
+                            <td><a href="http://"><button>Bayar</button></a></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <tbody>
+            </table>
         </div>
     </div>
+
     <script src="p.js"></script>
 </body>
 

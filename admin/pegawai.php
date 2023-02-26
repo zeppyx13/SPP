@@ -23,86 +23,88 @@ $no = 1;
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="sidebar">
-            <div class="logo">
-                <h1 class="a1">MY-<p>SPP</p>
-                </h1>
+    <aside>
+        <nav class="navbar">
+            <div class="sidebar">
+                <div class="logo">
+                    <h1 class="a1">MY-<p>SPP</p>
+                    </h1>
+                </div>
+                <div class="isi">
+                    <ul>
+                        <li>
+                            <a href="./">
+                                <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <b>Home</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <b>Tabel Siswa</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" href="./pegawai.php">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
+                                    <path d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z" />
+                                    <path d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z" />
+                                </svg>
+                                <b>Tabel Petugas</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./tarif.php">
+                                <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <b>Tabel SPP</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./pembayaran.php">
+                                <img src="../assets/emoticon/svg/solid/bxs-bank.svg" style="width:17px; height:17px; margin-right:5px;">
+                                <b>Pembayaran SPP</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
+                                <b>History Transaksi</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <b>Laporan</b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logout">
+                    <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>Logout</b></a>
+                </div>
             </div>
-            <div class="isi">
-                <ul>
-                    <li>
-                        <a href="./">
-                            <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b>Home</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b>Tabel Siswa</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="active" href="./pegawai.php">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
-                                <path d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z" />
-                                <path d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z" />
-                            </svg>
-                            <b>Tabel Petugas</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./tarif.php">
-                            <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b>Tabel SPP</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="../assets/emoticon/svg/solid/bxs-bank.svg" style="width:17px; height:17px; margin-right:5px;">
-                            <b>Pembayaran SPP</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
-                            <b>History Transaksi</b>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
-                            <b>Laporan</b>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="logout">
-                <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>Logout</b></a>
-            </div>
-        </div>
-    </nav>
-    <div class="nav-profile">
-        <ul>
-            <li>
+        </nav>
+        <div class="nav-profile">
+            <ul>
+                <li>
 
-            </li>
-            <li>
-                <div class="profile">
-                    <div class="nama">
-                        <span style="float:left; margin-top:5px;">
-                            <p>Hai,<b> <?= $nama ?></b></p>
+                </li>
+                <li>
+                    <div class="profile">
+                        <div class="nama">
+                            <span style="float:left; margin-top:5px;">
+                                <p>Hai,<b> <?= $nama ?></b></p>
+                            </span>
+                        </div>
+                        <span>
+                            <a href="#" id="profile-menu">
+                                <img class="gbr" src="../assets/img/user.jpg">
+                            </a>
                         </span>
                     </div>
-                    <span>
-                        <a href="#" id="profile-menu">
-                            <img class="gbr" src="../assets/img/user.jpg">
-                        </a>
-                    </span>
-                </div>
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
 
     <div class="table">
         <h2>Data Pegawai</h2>
