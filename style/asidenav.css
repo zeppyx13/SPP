@@ -73,9 +73,10 @@ img.gbr{
 
 .logo .a1 {
     float: left;
+    font-size:50px;
     margin-bottom: 5px;
-    margin-left: 30%;
-    margin-top: 20%;
+    margin-left: 15%;
+    margin-top: 2%;
     text-align: center;
     font-family: 'Teko';
 }
@@ -84,7 +85,6 @@ img.gbr{
     margin-bottom: 10px;
     text-align: center;
     font-family: 'Teko';
-
 }
 
 .navbar .sidebar {
@@ -113,7 +113,7 @@ li a {
     color: var(--text-color);
 }
 li a:hover {
-    color: white;
+    color: var(--bg);
   }
 li a.active  {
     fill:  var(--bg) !important;

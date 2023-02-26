@@ -23,7 +23,7 @@ h2{
 
 .table-wrapper{
   padding-left: 20%;
-  margin: 10px 50px 70px;
+  margin: 10px 10px 50px 70px;
 }
 
 .fl-table {
@@ -34,7 +34,7 @@ h2{
   border-collapse: collapse;
   width: 90%;
   max-width: 100%;
-  white-space: nowrap;
+  white-space:normal;
   background-color: white;
 }
 
