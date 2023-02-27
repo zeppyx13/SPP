@@ -6,9 +6,11 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
-$data = query($query);
-$no = 1;
+$siswa = query("SELECT * FROM Siswa");
+$pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran")[0];
+$apend =  $pendapatan["total"];
+$fpendapatan = "Rp. " . number_format($apend, 0, ',', '.');
+$jmlS = count($siswa);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,16 +112,16 @@ $no = 1;
     <div class="container">
         <div class="wrapper">
             <div class="info info-1">
-                <h2>Jumlah Siswa :</h2>
-                <h2 class="no"><b> 12</b></h2>
+                <h2>Siswa :</h2>
+                <h2 class="no"><b><?= $jmlS ?></b></h2>
             </div>
             <div class="info info-2">
-                <h2>Jumlah Siswa :</h2>
+                <h2>Transaksi :</h2>
                 <h2 class="no"><b> 12</b></h2>
             </div>
             <div class="info info-3">
-                <h2>Jumlah Siswa :</h2>
-                <h2 class="no"><b> 12</b></h2>
+                <h2>Pemasukan :</h2>
+                <h2 class="no"><b><?= $fpendapatan ?></b></h2>
             </div>
         </div>
     </div>
