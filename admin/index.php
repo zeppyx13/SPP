@@ -64,7 +64,7 @@ $no = 1;
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="./history.php">
                                 <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
                                 <b>History Transaksi</b>
                             </a>

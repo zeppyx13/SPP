@@ -134,13 +134,23 @@ li a svg{
         left: 0;
     }
 }
-@media (min-width: 1440px) {
+@media (min-width: 3440px) {
     html {
         font-size: 85%;
     }
     .navbar .sidebar {
         height: 100%;
         width: 10%;
+        left: 0;
+    }
+}
+@media (min-width: 1440px) {
+    html {
+        font-size: 85%;
+    }
+    .navbar .sidebar {
+        height: 100%;
+        width: 14%;
         left: 0;
     }
 }
