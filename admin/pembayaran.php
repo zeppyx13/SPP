@@ -108,7 +108,7 @@ $no = 1;
     </aside>
 
     <div class="table">
-        <h2>Data Tarif</h2>
+        <h2>Pebayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>

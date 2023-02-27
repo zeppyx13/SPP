@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM tarif;";
+$query = "SELECT * FROM pembayaran;";
 $data = query($query);
 $no = 1;
 ?>
@@ -111,22 +111,32 @@ $no = 1;
     </aside>
 
     <div class="table">
-        <h2>Data Tarif</h2>
+        <h2>History Pembayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
                     <tr>
+                        <th>Id</th>
+                        <th>NIP</th>
+                        <th>NIS</th>
+                        <th>jumlah</th>
+                        <th>Nama Siswa</th>
+                        <th>Nama Petugas</th>
                         <th>Angkatan</th>
-                        <th>Nominal</th>
-                        <th>Action</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
+                            <td><?= $row["IdPembayaran"] ?></td>
+                            <td><?= $row["NIP"] ?></td>
+                            <td><?= $row["Nis"] ?></td>
+                            <td><?= $row["Tgl"] ?></td>
+                            <td><?= $row["Nama_Siswa"] ?></td>
+                            <td><?= $row["Nama_Petugas"] ?></td>
                             <td><?= $row["Angkatan"] ?></td>
-                            <td><?= $row["Nominal"] ?></td>
                             <td><a href="http://"><button>Bayar</button></a></td>
                         </tr>
                         <?php $i++; ?>
