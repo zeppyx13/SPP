@@ -5,11 +5,14 @@ if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
+$tgl = date('m');
 $nama = $_SESSION['nama'];
 $siswa = query("SELECT * FROM Siswa");
+$transaksi = query("SELECT Tgl FROM pembayaran WHERE MONTH(Tgl)='$tgl'");
+$Ctang = count($transaksi);
 $pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran")[0];
 $apend =  $pendapatan["total"];
-$fpendapatan = "Rp. " . number_format($apend, 0, ',', '.');
+$fpendapatan = "" . number_format($apend, 0, ',', '.');
 $jmlS = count($siswa);
 ?>
 <!DOCTYPE html>
@@ -117,7 +120,7 @@ $jmlS = count($siswa);
             </div>
             <div class="info info-2">
                 <h2>Transaksi :</h2>
-                <h2 class="no"><b> 12</b></h2>
+                <h2 class="no"><b> <?= $Ctang ?></b></h2>
             </div>
             <div class="info info-3">
                 <h2>Pemasukan :</h2>
