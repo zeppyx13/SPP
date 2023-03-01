@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
@@ -19,6 +20,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
+    <link rel="stylesheet" href="../style/siswatable.css">
     <title>Dashboard || Tarif</title>
 </head>
 
@@ -89,7 +91,7 @@ $no = 1;
                 <?php
                 if (isset($_POST["cari"])) {
                     $keyword = $_POST['keyword'];
-                    $query = "SELECT * FROM siswa WHERE Nis like '%$keyword%'  LIMIT 1";
+                    $query = "SELECT * FROM siswa WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
                 }
                 ?>
                 <form action="" method="POST">
@@ -132,28 +134,31 @@ $no = 1;
     </aside>
 
     <div style="margin-top: 5%;" class="table">
-        <div class="table-wrapper">
-            <table class="fl-table">
+        <div class="table-wrapper-siswa">
+            <table class="fl-table-siswa">
                 <?php
                 $hasil = mysqli_query($konek, $query);
                 $row = mysqli_fetch_assoc($hasil);
                 ?>
                 <thead>
                     <tr>
-                        <th colspan="2">Data siswa</th>
+                        <th colspan="3">Data siswa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>NISN</th>
+                        <td class="jdl"><b>NISN</b></td>
+                        <td>:</td>
                         <td><?= $row['Nis']; ?></td>
                     </tr>
                     <tr>
-                        <th>Nama</th>
+                        <td class="jdl"><b>Nama</b></td>
+                        <td>:</td>
                         <td><?= $row['Nama_Siswa']; ?></td>
                     </tr>
                     <tr>
-                        <th>Kelas</th>
+                        <td class="jdl"><b>Kelas</b></td>
+                        <td>:</td>
                         <td><?= $row['Kelas']; ?></td>
                     </tr>
                 <tbody>
