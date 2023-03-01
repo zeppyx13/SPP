@@ -56,11 +56,60 @@ img.gbr{
 
 
 .nav-profile .cari {
-    top: 15px;
+    width: 800px;
+    left: 40%;
+    z-index: 800;
+    top: 32%;
     right: 20px;
-    position: fixed;
-    justify-content: space-between;
+    position: relative;
+    justify-content: center;
 }
+.nav-profile .cari input {
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 12px;
+    border: 3px solid #968c8381;
+}
+.nav-profile button.tombol-cari {
+    background-color: var(--primary);
+    border: 1px solid #aaa595;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 0 0 5px;
+}
+.nav-profile button .gbrcari {
+    width:15px; 
+    height:15px; 
+    margin-right:5px;
+    position: absolute;
+    left: 415px;
+    color: white;
+}
+.nav-profile button.tombol-cari:hover {
+    background-color: var(--primary);
+    border: 1px solid #aaa595;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.nav-profile button.tombol-cari:active {
+    background-color: var(--primary);
+    border: 1px solid #aaa595;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
 
 .logo .a1 {
     float: left;

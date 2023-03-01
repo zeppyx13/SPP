@@ -85,9 +85,16 @@ $no = 1;
             </div>
         </nav>
         <div class="nav-profile">
+            <div class="cari">
+                <form action="" method="$_GET">
+                    <input placeholder="NIS/NISN" type="text">
+                    <button class="tombol-cari"><svg xmlns="http://www.w3.org/2000/svg" class="gbrcari" fill="white" viewBox="0 0 24 24">
+                            <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
+                        </svg>Search</button>
+                </form>
+            </div>
             <ul>
                 <li>
-
                 </li>
                 <li>
                     <div class="profile">
@@ -107,27 +114,27 @@ $no = 1;
         </div>
     </aside>
 
-    <div class="table">
-        <h2>Pebayaran</h2>
+    <div style="margin-top: 5%;" class="table">
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Angkatan</th>
-                        <th>Nominal</th>
-                        <th>Action</th>
+                        <th colspan="2">Data siswa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($data as $row) : ?>
-                        <tr>
-                            <td><?= $row["Angkatan"] ?></td>
-                            <td><?= $row["Nominal"] ?></td>
-                            <td><a href="http://"><button>Bayar</button></a></td>
-                        </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
+                    <tr>
+                        <th>NISN</th>
+                        <td>5318</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Kelas</th>
+                        <td></td>
+                    </tr>
                 <tbody>
             </table>
         </div>
