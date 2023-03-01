@@ -86,11 +86,28 @@ $no = 1;
         </nav>
         <div class="nav-profile">
             <div class="cari">
-                <form action="" method="$_GET">
-                    <input placeholder="NIS/NISN" type="text">
-                    <button class="tombol-cari"><svg xmlns="http://www.w3.org/2000/svg" class="gbrcari" fill="white" viewBox="0 0 24 24">
+                <?php
+                if (isset($_POST["cari"])) {
+                    $keyword = $_POST['keyword'];
+                    $query = "SELECT * FROM siswa WHERE Nis like '%$keyword%'  LIMIT 1";
+                }
+                ?>
+                <form action="" method="POST">
+                    <input list="list_nis" autocomplete="off" name="keyword" placeholder=" NIS/NISN" type="text">
+                    <button name="cari" class="tombol-cari"><svg xmlns="http://www.w3.org/2000/svg" class="gbrcari" fill="white" viewBox="0 0 24 24">
                             <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
                         </svg>Search</button>
+                    <datalist id="list_nis">
+                        <?php
+                        $hasil = mysqli_query($konek, "SELECT Nis FROM siswa");
+                        while ($row = mysqli_fetch_assoc($hasil)) {
+                        ?>
+                            <option value="<?php echo $row['Nis']; ?>"></option>
+                        <?php
+                        }
+                        ?>
+
+                    </datalist>
                 </form>
             </div>
             <ul>
@@ -117,6 +134,10 @@ $no = 1;
     <div style="margin-top: 5%;" class="table">
         <div class="table-wrapper">
             <table class="fl-table">
+                <?php
+                $hasil = mysqli_query($konek, $query);
+                $row = mysqli_fetch_assoc($hasil);
+                ?>
                 <thead>
                     <tr>
                         <th colspan="2">Data siswa</th>
@@ -125,15 +146,15 @@ $no = 1;
                 <tbody>
                     <tr>
                         <th>NISN</th>
-                        <td>5318</td>
+                        <td><?= $row['Nis']; ?></td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td></td>
+                        <td><?= $row['Nama_Siswa']; ?></td>
                     </tr>
                     <tr>
                         <th>Kelas</th>
-                        <td></td>
+                        <td><?= $row['Kelas']; ?></td>
                     </tr>
                 <tbody>
             </table>
