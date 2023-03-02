@@ -148,24 +148,59 @@ $no = 1;
                 <tbody>
                     <tr>
                         <td class="jdl"><b>NISN</b></td>
-                        <td>:</td>
-                        <td><?= $row['Nis']; ?></td>
+                        <td class="titik2">:</td>
+                        <td class="hasil"><?= $row['Nis']; ?></td>
                     </tr>
                     <tr>
-                        <td class="jdl"><b>Nama</b></td>
-                        <td>:</td>
-                        <td><?= $row['Nama_Siswa']; ?></td>
+                        <td class=" jdl"><b>Nama</b></td>
+                        <td class="titik2">:</td>
+                        <td class="hasil"><?= $row['Nama_Siswa']; ?></td>
                     </tr>
                     <tr>
                         <td class="jdl"><b>Kelas</b></td>
-                        <td>:</td>
-                        <td><?= $row['Kelas']; ?></td>
+                        <td class="titik2">:</td>
+                        <td class="hasil"><?= $row['Kelas']; ?></td>
                     </tr>
                 <tbody>
             </table>
         </div>
-    </div>
+        <hr>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>NISN</th>
+                        <th>NIS</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Alamat</th>
+                        <th>No telp</th>
+                        <th>Nominal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
+                    ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $row) : ?>
+                        <tr>
+                            <td><?= $row["NISN"] ?></td>
+                            <td><?= $row["Nis"] ?></td>
+                            <td><?= $row["Nama_Siswa"] ?></td>
+                            <td><?= $row["Kelas"] ?></td>
+                            <td><?= $row["Alamat"] ?></td>
+                            <td><?= $row["Tlp"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
+                            <td><a href="http://"><button>Bayar</button></a></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
+    </div>
     <script src="p.js"></script>
 </body>
 
