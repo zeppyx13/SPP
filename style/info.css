@@ -16,7 +16,7 @@ body{
     text-align: center;
     margin-bottom: 20%;
     display: flex;
-    width: 740px;
+    width: 1000px;
     height: 500px;
 }
 .subjudul{
@@ -26,15 +26,16 @@ body{
     margin-bottom: 5%;
 }
 .container .wrapper .info{
+
     text-align: center;
     box-shadow: 5px 5px 5px #9a9999d1;
     color: rgb(0, 0, 0);
-    padding-top: 20px;
+    padding-top: 10px;
     margin-right: 20px;
     margin-bottom: 70%;
     border-radius: 20px;
     height: 33%;
-    width: 33%;
+    width: 40%;
 }
 .container .wrapper .info-1{
     background:linear-gradient(to right,#8E806A, #C3B091);
@@ -43,9 +44,12 @@ body{
     background:linear-gradient(to right,#C3B091, #E4CDA7);
 }
 .container .wrapper .info-3{
+    padding: 20px;
     background:linear-gradient(to right,#E4CDA7, #ffe6bc);
 }
 h2.no{
     font-size: xx-large;
-    margin-top: 15%;
+    margin-top: 10%;
+    max-width: 300px;
+    word-break: break-all;
 }

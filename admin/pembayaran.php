@@ -7,8 +7,6 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM tarif;";
-$data = query($query);
 $no = 1;
 ?>
 <!DOCTYPE html>
@@ -21,7 +19,7 @@ $no = 1;
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
     <link rel="stylesheet" href="../style/siswatable.css">
-    <title>Dashboard || Tarif</title>
+    <title>Dashboard || Pembayaran</title>
 </head>
 
 <body>
@@ -92,6 +90,7 @@ $no = 1;
                 if (isset($_POST["cari"])) {
                     $keyword = $_POST['keyword'];
                     $query = "SELECT * FROM siswa WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
+                    $nis = $keyword;
                 }
                 ?>
                 <form action="" method="POST">
@@ -169,30 +168,31 @@ $no = 1;
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>NISN</th>
-                        <th>NIS</th>
-                        <th>Nama Siswa</th>
-                        <th>Kelas</th>
-                        <th>Alamat</th>
+                        <th>Tahun</th>
+                        <th>Bulan</th>
+                        <th>Tanggal Bayar</th>
+                        <th>Jumlah</th>
                         <th>No telp</th>
                         <th>Nominal</th>
+                        <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-
+                    $qcari = "SELECT * FROM pembayaran WHERE Nis ='5333";
+                    $data = query($qcari);
                     ?>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
-                            <td><?= $row["NISN"] ?></td>
-                            <td><?= $row["Nis"] ?></td>
-                            <td><?= $row["Nama_Siswa"] ?></td>
-                            <td><?= $row["Kelas"] ?></td>
-                            <td><?= $row["Alamat"] ?></td>
-                            <td><?= $row["Tlp"] ?></td>
-                            <td><?= $row["Nominal"] ?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?= $data[''] ?></td>
+                            <td><?= $data[''] ?></td>
+                            <td><?= $data[''] ?></td>
                             <td><a href="http://"><button>Bayar</button></a></td>
                         </tr>
                         <?php $i++; ?>
