@@ -109,9 +109,10 @@ $no = 1;
         <h2>Data Tarif</h2>
         <div class="table-wrapper">
             <table class="fl-table">
+                <a href="#"><button class="form-insert">INSERT</button></a>
                 <thead>
                     <tr>
-                        <th>Angkatan</th>
+                        <th class="row-angkatan">Angkatan</th>
                         <th>Nominal</th>
                         <th>Action</th>
                     </tr>
@@ -122,7 +123,7 @@ $no = 1;
                         <tr>
                             <td><?= $row["Angkatan"] ?></td>
                             <td><?= $row["Nominal"] ?></td>
-                            <td><a href="http://"><button>Bayar</button></a></td>
+                            <td><a href="http://"><button class="hapus">Hapus</button><button class="Update">Update</button></a></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>

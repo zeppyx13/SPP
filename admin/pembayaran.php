@@ -8,6 +8,7 @@ if (!isset($_SESSION['admin'])) {
 }
 $nama = $_SESSION['nama'];
 $no = 1;
+$query = "SELECT * FROM siswa WHERE Nis = ''";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +181,7 @@ $no = 1;
                 </thead>
                 <tbody>
                     <?php
-                    $qcari = "SELECT * FROM pembayaran WHERE Nis ='5333";
+                    $qcari = "SELECT * FROM pembayaran WHERE Nis =''";
                     $data = query($qcari);
                     ?>
                     <?php $i = 1; ?>

@@ -57,6 +57,51 @@ h2{
 .fl-table tr:nth-child(even) {
   background: #F8F8F8;
 }
+.hapus{
+  background-color: crimson;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding:10px 25px  10px 25px;
+  margin: 0 10px 0 0;
+}
+
+.Update{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: rgb(207, 220, 20);
+  padding:10px 25px  10px 25px ;
+  border-radius: 10px;
+}
+a button.form-insert:hover,
+.Update:hover,
+.hapus:hover{
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+a button.form-insert:active,
+.Update:active,
+.hapus:active{
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.row-angkatan{
+  width: 500px;
+}
+
+a button.form-insert{
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: rgb(207, 220, 20);
+}
 
 /* Responsive */
 
