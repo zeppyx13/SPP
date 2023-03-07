@@ -113,7 +113,7 @@ $no = 1;
     </aside>
 
     <div class="table">
-        <h2>History Pembayaran</h2>
+        <h2>Laporan Pembayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>

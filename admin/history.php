@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM pembayaran;";
+$query = "SELECT MONTH(Tgl),Year(Tgl),Day(Tgl),IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.Angkatan, pembayaran.Jumlah, siswa.Kelas FROM pembayaran INNER JOIN siswa USING(Nis);";
 $data = query($query);
 $no = 1;
 ?>
@@ -116,26 +116,34 @@ $no = 1;
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>NIP</th>
+                        <th>No</th>
+                        <th>Id Pembayaran</th>
                         <th>NIS</th>
-                        <th>jumlah</th>
                         <th>Nama Siswa</th>
-                        <th>Nama Petugas</th>
+                        <th>Nama petugas</th>
+                        <th>Kelas</th>
                         <th>Angkatan</th>
+                        <th>Tanggal</th>
+                        <th>Bulan</th>
+                        <th>Tahun </th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
-                            <td><?= $row["IdPembayaran"] ?></td>
-                            <td><?= $row["NIP"] ?></td>
-                            <td><?= $row["Nis"] ?></td>
-                            <td><?= $row["Tgl"] ?></td>
-                            <td><?= $row["Nama_Siswa"] ?></td>
-                            <td><?= $row["Nama_Petugas"] ?></td>
-                            <td><?= $row["Angkatan"] ?></td>
+                            <td><?= $i ?></td>
+                            <td><?= $row['IdPembayaran']; ?></td>
+                            <td><?= $row['Nis']; ?></td>
+                            <td><?= $row['Nama_Siswa']; ?></td>
+                            <td><?= $row['Nama_Petugas']; ?></td>
+                            <td><?= $row['Kelas']; ?></td>
+                            <td><?= $row['Angkatan']; ?></td>
+                            <td><?= $row['Day(Tgl)'] ?></td>
+                            <td><?= $row['MONTH(Tgl)'] ?></td>
+                            <td><?= $row['Year(Tgl)'] ?></td>
+                            <td><?= $row['Jumlah'] ?></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
