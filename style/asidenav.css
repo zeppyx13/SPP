@@ -173,13 +173,13 @@ li a svg{
 .logout :hover {
     color: var(--bg);
 }
-@media (max-width: 758px) {
+@media (min-width: 758px) {
     html {
-        font-size: 85%;
+        font-size: 80%;
     }
     .navbar .sidebar {
         height: 100%;
-        width: 180px;
+        width: 185px;
         left: 0;
     }
 }

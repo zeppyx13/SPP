@@ -75,7 +75,7 @@ $jmlS = count($siswa);
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="./laporan.php">
                                 <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
                                 <b>Laporan</b>
                             </a>

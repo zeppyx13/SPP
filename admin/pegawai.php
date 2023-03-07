@@ -71,7 +71,7 @@ $no = 1;
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="./laporan.php">
                                 <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
                                 <b>Laporan</b>
                             </a>
@@ -110,6 +110,9 @@ $no = 1;
         <h2>Data Pegawai</h2>
         <div class="table-wrapper">
             <table class="fl-table">
+                <a href="#"><button class="form-insert"><svg fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
+                        </svg></button></a>
                 <thead>
                     <tr>
                         <th>NIP</th>
@@ -129,7 +132,7 @@ $no = 1;
                             <td><?= $row["tlp"] ?></td>
                             <td><?= $row["Alamat"] ?></td>
                             <td><?= $row["Jabatan"] ?></td>
-                            <td>tombol</td>
+                            <td><a href="http://"><img src="../assets/emoticon/svg/regular/bx-trash.svg" alt=""><img style="margin-left:20px;" src="../assets/emoticon/svg/regular/bx-pen.svg" alt=""></a></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
