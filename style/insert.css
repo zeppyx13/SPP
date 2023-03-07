@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper{
+    display: relative;
+    width: 500px;
+    height: 500px;
+    background-color: aliceblue;
+}
+.Judul{
+    margin: 20px 0 0 0;
+    text-align:center ;
+}
