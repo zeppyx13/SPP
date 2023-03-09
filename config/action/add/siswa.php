@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+require '../../php/backend.php';
+$nisiswa = query("SELECT Nis from siswa")
 ?>
 <!DOCTYPE html>
 <html lang="en">
