@@ -18,11 +18,13 @@ if (isset($_POST['login'])) {
     } elseif (mysqli_num_rows($qpetugas) > 0) {
         $dta = mysqli_fetch_assoc($qpetugas);
         $_SESSION['id_petugas'] = $dta['NIP'];
+        $_SESSION['petugas'] = true;
         $_SESSION['nama'] = $dta['Nama_Petugas'];
         $_SESSION['level'] = $dta['Jabatan'];
         echo "<script>window.location='../../admin/'</script>";
     } elseif (mysqli_num_rows($qsiswa) > 0) {
         $dta = mysqli_fetch_assoc($qsiswa);
+        $_SESSION['siswa'] = true;
         $_SESSION['Nis'] = $dta['Nis'];
         $_SESSION['nama'] = $dta['Nama_Siswa'];
         echo "<script>window.location='../../siswa/'</script>";

@@ -8,7 +8,6 @@ if (!isset($_SESSION['admin'])) {
 $nama = $_SESSION['nama'];
 $query = "SELECT * FROM petugas";
 $data = query($query);
-$no = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
