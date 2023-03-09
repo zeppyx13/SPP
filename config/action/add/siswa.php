@@ -74,7 +74,7 @@ if (isset($_POST['add'])) {
                   <option value="bkn">-Pilih Angkatan-</option>
                   <?php $i = 1; ?>
                   <?php foreach ($angkatan as $angkatan) : ?>
-                    <option value="<?= $angkatan['id']; ?>"><?= $angkatan['tipe']; ?></option>
+                    <option value="<?= $angkatan['Angkatan']; ?>"><?= $angkatan['tipe']; ?></option>
                     <?php $i++; ?>
                   <?php endforeach; ?>
                 </select>
