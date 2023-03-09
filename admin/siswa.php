@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa INNER JOIN tarif USING(Angkatan);";
+$query = "SELECT * FROM siswa";
 $data = query($query);
 $no = 1;
 ?>
@@ -122,7 +122,7 @@ $no = 1;
                         <th>Kelas</th>
                         <th>Alamat</th>
                         <th>No telp</th>
-                        <th>Nominal</th>
+                        <th>Angkatan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -136,8 +136,8 @@ $no = 1;
                             <td><?= $row["Kelas"] ?></td>
                             <td><?= $row["Alamat"] ?></td>
                             <td><?= $row["Tlp"] ?></td>
-                            <td><?= $row["Nominal"] ?></td>
-                            <td><a href="http://"><img src="../assets/emoticon/svg/regular/bx-trash.svg" alt=""><img style="margin-left:20px;" src="../assets/emoticon/svg/regular/bx-pen.svg" alt=""></a></td>
+                            <td><?= $row["Angkatan"] ?></td>
+                            <td><a href="http://"><img src="../assets/emoticon/svg/regular/bx-trash.svg" alt=""><img style="margin-left:auto;" src="../assets/emoticon/svg/regular/bx-pen.svg" alt=""></a></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
