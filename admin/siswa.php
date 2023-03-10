@@ -60,6 +60,12 @@ $no = 1;
                             </a>
                         </li>
                         <li>
+                            <a href="./kelas.php">
+                                <img src="../assets/emoticon/svg/solid/bxs-user-detail.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <b>Tabel Kelas</b>
+                            </a>
+                        </li>
+                        <li>
                             <a href="./pembayaran.php">
                                 <img src="../assets/emoticon/svg/solid/bxs-bank.svg" style="width:17px; height:17px; margin-right:5px;">
                                 <b>Pembayaran SPP</b>

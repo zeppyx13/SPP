@@ -6,8 +6,9 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM petugas";
+$query = "SELECT * FROM kelas";
 $data = query($query);
+$no = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@ $data = query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
-    <title>Dashboard || pegawai</title>
+    <title>Dashboard || Tarif</title>
 </head>
 
 <body>
@@ -43,23 +44,24 @@ $data = query($query);
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="./pegawai.php">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
-                                    <path d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z" />
-                                    <path d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z" />
-                                </svg>
+                            <a href="./pegawai.php">
+                                <img src="../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
                                 <b>Tabel Petugas</b>
                             </a>
                         </li>
                         <li>
                             <a href="./tarif.php">
-                                <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
+                                    <path d="M4 21h15.893c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zm0-2v-5h4v5H4zM14 7v5h-4V7h4zM8 7v5H4V7h4zm2 12v-5h4v5h-4zm6 0v-5h3.894v5H16zm3.893-7H16V7h3.893v5z" />
+                                </svg>
                                 <b>Tabel SPP</b>
                             </a>
                         </li>
                         <li>
-                            <a href="./kelas.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-user-detail.svg" style="width:15px; height:15px; margin-right:5px;">
+                            <a class="active" href="./kelas.php">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5 4.5 6.505 4.5 8.5 6.005 12 8 12z" />
+                                </svg>
                                 <b>Tabel Kelas</b>
                             </a>
                         </li>
@@ -112,19 +114,19 @@ $data = query($query);
     </aside>
 
     <div class="table">
-        <h2>Data Pegawai</h2>
+        <h2>Data Kelas</h2>
         <div class="table-wrapper">
             <table class="fl-table">
-                <a href="#"><button class="form-insert"><svg fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <a href="../config/action/add/tarif.php"><button class="form-insert"><svg fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
                         </svg></button></a>
                 <thead>
                     <tr>
-                        <th>NIP</th>
-                        <th>Nama_Petugas</th>
-                        <th>No telp</th>
-                        <th>Alamat</th>
-                        <th>Jabatan</th>
+                        <th>Id</th>
+                        <th class="row-angkatan">Angkatan</th>
+                        <th>tipe</th>
+                        <th>kelas</th>
+                        <th>Jurusan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -132,11 +134,10 @@ $data = query($query);
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
-                            <td><?= $row["NIP"] ?></td>
-                            <td><?= $row["Nama_Petugas"] ?></td>
-                            <td><?= $row["tlp"] ?></td>
-                            <td><?= $row["Alamat"] ?></td>
-                            <td><?= $row["Jabatan"] ?></td>
+                            <td><?= $row["id"] ?></td>
+                            <td><?= $row["tipe"] ?></td>
+                            <td><?= $row["Kelas"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
                             <td><a class="icon-hps" href="">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
                                         <path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z" />
