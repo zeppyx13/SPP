@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../../php/backend.php';
-$years = range(2006, strftime("%Y", time()));
+$years = range(2006, 2100);
 if (isset($_POST['add'])) {
     if (AddTarif($_POST) > 0) {
         echo "<script>
@@ -49,8 +49,8 @@ if (isset($_POST['add'])) {
                                 <label for="kelas" class="formbold-form-label">Kelass </label>
                                 <select required class="formbold-form-input" name="kelas" id="kelas">
                                     <option value="bkn">-Pilih Tipe-</option>
-                                    <option value="bkn">Reguler</option>
-                                    <option value="bkn">Laptop</option>
+                                    <option value="Reguler">Reguler</option>
+                                    <option value="Laptop">Laptop</option>
                                 </select>
                             </div>
                         </div>

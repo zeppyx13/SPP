@@ -46,31 +46,26 @@ function AddSiswa($data)
 function AddTarif($data)
 {
   global $konek;
-  $nisn = $data['nisn'];
-  $nis = $data['nis'];
+  $Angkatan = $data['Angkatan'];
+  $Nominal = $data['Nominal'];
   $kelas = $data['kelas'];
-  $angkatan = $data['angkatan'];
-  $tlp = $data['tlp'];
-  $pw = $data['password'];
-  $nama = $data['nama'];
-  $alamat = $data['alamat'];
-  if ($angkatan == 'bkn') {
+  if ($Angkatan == 'bkn') {
     echo "<script>
       alert('Pilih Angkatan')
-      document.location.href='../add/siswa.php';
+      document.location.href='../add/tarif.php';
       </script>";
     exit;
     die;
   }
   if ($kelas == 'bkn') {
     echo "<script>
-      alert('Pilih Kelas')
-      document.location.href='../add/siswa.php';
+      alert('Pilih Tipe Kelas')
+      document.location.href='../add/tarif.php';
       </script>";
     exit;
     die;
   }
-  $query = "INSERT INTO siswa VALUES('$nisn','$nama','$kelas','$tlp','$nis','$pw','$alamat','$angkatan')";
+  $query = "INSERT INTO tarif VALUES('','$Angkatan', '$kelas', '$Nominal')";
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
