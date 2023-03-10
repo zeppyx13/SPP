@@ -109,12 +109,14 @@ $no = 1;
         <h2>Data Tarif</h2>
         <div class="table-wrapper">
             <table class="fl-table">
-                <a href="#"><button class="form-insert"><svg fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <a href="../config/action/add/tarif.php"><button class="form-insert"><svg fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
                         </svg></button></a>
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th class="row-angkatan">Angkatan</th>
+                        <th>tipe</th>
                         <th>Nominal</th>
                         <th>Action</th>
                     </tr>
@@ -123,7 +125,9 @@ $no = 1;
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
+                            <td><?= $row["id"] ?></td>
                             <td><?= $row["Angkatan"] ?></td>
+                            <td><?= $row["tipe"] ?></td>
                             <td><?= $row["Nominal"] ?></td>
                             <td><a class="icon-hps" href="">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">

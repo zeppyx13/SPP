@@ -5,20 +5,11 @@ $nisiswa = query("SELECT Nis from siswa ORDER BY Nis DESC")[0];
 $nisiswaP = (int)$nisiswa['Nis'] + 1;
 $angkatan = query("SELECT * from tarif");
 if (isset($_POST['add'])) {
-  if (Asiswa($_POST) > 0) {
-    if ($_SESSION['admin']) {
-      echo "<script>
-      alert('Siswa Ditambahkan')
-      document.location.href='../../../admin/siswa.php';
-      </script>";
-    } elseif ($_SESSION['petugas']) {
-      echo "<script>
-      alert('Siswa Ditambahkan')
-      document.location.href='../../../petugas/siswa.php';
-      </script>";
-    } else {
-      echo '../../php/logout.php';
-    };
+  if (AddSiswa($_POST) > 0) {
+    echo "<script>
+    alert('Siswa Ditambahkan')
+    document.location.href='../../../admin/siswa.php';
+    </script>";
   } else {
     echo mysqli_error($konek);
   }
