@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM tarif;";
+$query = "SELECT * FROM tarif ORDER BY Angkatan ASC";
 $data = query($query);
 $no = 1;
 ?>
@@ -120,7 +120,7 @@ $no = 1;
                         </svg></button></a>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>No</th>
                         <th class="row-angkatan">Angkatan</th>
                         <th>tipe</th>
                         <th>Nominal</th>
@@ -131,7 +131,7 @@ $no = 1;
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
                         <tr>
-                            <td><?= $row["id"] ?></td>
+                            <td><?= $i ?></td>
                             <td><?= $row["Angkatan"] ?></td>
                             <td><?= $row["tipe"] ?></td>
                             <td><?= $row["Nominal"] ?></td>

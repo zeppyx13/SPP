@@ -69,6 +69,32 @@ function AddTarif($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function AddKelas($data)
+{
+  global $konek;
+  $tipe = $data['tipe'];
+  $jurusan = $data['jurusan'];
+  $kelas = $data['kelas'];
+  if ($kelas == 'bkn') {
+    echo "<script>
+      alert('Pilih Kelas')
+      document.location.href='../add/kelas.php';
+      </script>";
+    exit;
+    die;
+  }
+  if ($tipe == 'bkn') {
+    echo "<script>
+      alert('Pilih Angkatan & tipe')
+      document.location.href='../add/kelas.php';
+      </script>";
+    exit;
+    die;
+  }
+  $query = "INSERT INTO kelas VALUES('','$tipe', '$kelas', '$jurusan')";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
 // Update
 function UpdateSiswa($data)
 {
