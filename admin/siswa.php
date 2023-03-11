@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa";
+$query = "SELECT * FROM siswa inner join kelas on siswa.idkelas = kelas.idkelas inner join tarif on kelas.idtarif = tarif.id";
 $data = query($query);
 $no = 1;
 ?>
@@ -126,9 +126,11 @@ $no = 1;
                         <th>NIS</th>
                         <th>Nama Siswa</th>
                         <th>Kelas</th>
+                        <th>Jurusan</th>
                         <th>Alamat</th>
                         <th>No telp</th>
                         <th>Angkatan</th>
+                        <th>Nominal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -139,10 +141,12 @@ $no = 1;
                             <td><?= $row["NISN"] ?></td>
                             <td><?= $row["Nis"] ?></td>
                             <td><?= $row["Nama_Siswa"] ?></td>
-                            <td><?= $row["Kelas"] ?></td>
+                            <td><?= $row["kelas"] ?></td>
+                            <td><?= $row["jurusan"] ?></td>
                             <td><?= $row["Alamat"] ?></td>
                             <td><?= $row["Tlp"] ?></td>
                             <td><?= $row["Angkatan"] ?></td>
+                            <td><?= $row["Nominal"] ?></td>
                             <td><a class="icon-hps" href="">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
                                         <path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z" />

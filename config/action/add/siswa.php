@@ -2,8 +2,8 @@
 session_start();
 require '../../php/backend.php';
 $nisiswa = query("SELECT Nis from siswa ORDER BY Nis DESC")[0];
+$kelas = query("SELECT * FROM kelas inner join tarif on kelas.idtarif = tarif.id");
 $nisiswaP = (int)$nisiswa['Nis'] + 1;
-$angkatan = query("SELECT * from tarif");
 if (isset($_POST['add'])) {
   if (AddSiswa($_POST) > 0) {
     echo "<script>
@@ -49,30 +49,6 @@ if (isset($_POST['add'])) {
             </div>
             <div class="formbold-input-flex">
               <div>
-                <label for="kelas" class="formbold-form-label"> Kelas : </label>
-                <select class="formbold-form-input" name="kelas" id="kelas">
-                  <option value="bkn">-Pilih Kelas-</option>
-                  <?php $i = 1; ?>
-                  <?php foreach ($angkatan as $angkatans) : ?>
-                    <option value="<?= $angkatans['kelas']; ?>"><?= $angkatans['kelas']; ?></option>
-                    <?php $i++; ?>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-              <div>
-                <label for="angkatan" class="formbold-form-label"> Angkatan : </label>
-                <select class="formbold-form-input" name="angkatan" id="angkatan">
-                  <option value="bkn">-Pilih Angkatan-</option>
-                  <?php $i = 1; ?>
-                  <?php foreach ($angkatan as $angkatan) : ?>
-                    <option value="<?= $angkatan['Angkatan']; ?>"><?= $angkatan['tipe']; ?></option>
-                    <?php $i++; ?>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-            </div>
-            <div class="formbold-input-flex">
-              <div>
                 <label for="tlp" class="formbold-form-label"> No telp : </label>
                 <input type="text" name="tlp" id="tlp" class="formbold-form-input" autocomplete="off" required />
               </div>
@@ -81,7 +57,19 @@ if (isset($_POST['add'])) {
                 <input type="password" name="password" id="password" class="formbold-form-input" autocomplete="off" required />
               </div>
             </div>
-
+            <div class="formbold-mb-3">
+              <div>
+                <label for="kelas" class="formbold-form-label"> Kelas : </label>
+                <select class="formbold-form-input" name="kelas" id="kelas">
+                  <option value="bkn">-Pilih Kelas-</option><?= $kelas["kealas"] ?>
+                  <?php $i = 1; ?>
+                  <?php foreach ($kelas as $kelas) : ?>
+                    <option value="<?= $kelas["idkelas"] ?>"><?= $kelas["kelas"] ?> || <?= $kelas["jurusan"] ?> || <?= $kelas['Angkatan'] ?> || <?= $kelas['tipe'] ?></option>
+                    <?php $i++; ?>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
             <div class="formbold-mb-3">
               <label for="nama" class="formbold-form-label">
                 Nama siswa :
