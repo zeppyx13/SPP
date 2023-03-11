@@ -5,9 +5,9 @@ $years = range(2006, date('Y') + 17);
 if (isset($_POST['add'])) {
     if (AddTarif($_POST) > 0) {
         echo "<script>
-      alert('Tarif Ditambahkan')
-      document.location.href='../../../admin/tarif.php';
-      </script>";
+    alert('Tarif Ditambahkan')
+    document.location.href='../../../admin/tarif.php';
+    </script>";
     } else {
         echo mysqli_error($konek);
     }

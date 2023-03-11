@@ -95,6 +95,27 @@ function AddKelas($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function AddPegawai($data)
+{
+  global $konek;
+  $nip = $data['nip'];
+  $tlp = $data['tlp'];
+  $jabatan = $data['jabatan'];
+  $nama = $data['nama'];
+  $pw = $data['password'];
+  $alamat = $data['alamat'];
+  if ($jabatan == 'bkn') {
+    echo "<script>
+      alert('Pilih jabatan')
+      document.location.href='../add/pegawai.php';
+      </script>";
+    exit;
+    die;
+  }
+  $query = "INSERT INTO petugas VALUES('$nama','$pw', '$nip', '$jabatan','$tlp','$alamat')";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
 // Update
 function UpdateSiswa($data)
 {
