@@ -18,19 +18,10 @@ function AddSiswa($data)
   $nisn = $data['nisn'];
   $nis = $data['nis'];
   $kelas = $data['kelas'];
-  $angkatan = $data['angkatan'];
   $tlp = $data['tlp'];
   $pw = $data['password'];
   $nama = $data['nama'];
   $alamat = $data['alamat'];
-  if ($angkatan == 'bkn') {
-    echo "<script>
-      alert('Pilih Angkatan')
-      document.location.href='../add/siswa.php';
-      </script>";
-    exit;
-    die;
-  }
   if ($kelas == 'bkn') {
     echo "<script>
       alert('Pilih Kelas')
@@ -39,7 +30,7 @@ function AddSiswa($data)
     exit;
     die;
   }
-  $query = "INSERT INTO siswa VALUES('$nisn','$nama','$kelas','$tlp','$nis','$pw','$alamat','$angkatan')";
+  $query = "INSERT INTO siswa VALUES('$nisn','$nama','$kelas','$tlp','$nis','$pw','$alamat')";
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
