@@ -1,15 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require '../../php/backend.php';
+$id = $_GET['id'];
+$tabel = $_GET['tabel'];
+$primary =  $_GET['primary'];
+$hapus = mysqli_query($konek, "DELETE FROM $tabel WHERE $primary = '$id'");
+if ($hapus > 0) {
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hapus || </title>
-</head>
-
-<body>
-
-</body>
-
-</html>
+    if ($tabel == "siswa") {
+        echo "<script>
+            alert('data $tabel berhasil di hapus')
+            document.location.href='../../../admin/siswa.php';
+            </script>
+            ";
+    } else if ($tabel == "tarif") {
+        echo "<script>
+        alert('data $tabel berhasil di hapus')
+        document.location.href='../../../admin/tarif.php';
+        </script>
+        ";
+    } else if ($tabel == "kelas") {
+        echo "<script>
+        alert('data $tabel berhasil di hapus')
+        document.location.href='../../../admin/kelas.php';
+        </script>
+        ";
+    } else if ($tabel == "petugas") {
+        echo "<script>
+        alert('data $tabel berhasil di hapus')
+        document.location.href='../../../admin/pegawai.php';
+        </script>
+        ";
+    } else {
+        echo "<script>
+            alert('data $tabel gagal di hapus')
+            document.location.href='../../../admin/';
+            </script>
+            ";
+    }
+}
