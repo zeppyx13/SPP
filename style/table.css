@@ -106,7 +106,8 @@ a button.form-insert {
   background-color: var(--head);
 }
 
-.icon-hps>svg {
+.icon-hps>svg,
+svg.icon-hps {
   padding-right: 5px;
   fill: black;
   margin: auto;
