@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT * FROM siswa right join kelas on siswa.idkelas = kelas.idkelas left join tarif on kelas.idtarif = tarif.id";
+$query = "SELECT * FROM siswa inner join kelas on siswa.idkelas = kelas.idkelas inner join tarif on kelas.idtarif = tarif.id";
 $data = query($query);
 $no = 1;
 ?>

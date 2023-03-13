@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin'])) {
 }
 $nama = $_SESSION['nama'];
 $no = 1;
-$query = "SELECT * FROM siswa WHERE Nis = ''";
+$query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +96,7 @@ $query = "SELECT * FROM siswa WHERE Nis = ''";
                 <?php
                 if (isset($_POST["cari"])) {
                     $keyword = $_POST['keyword'];
-                    $query = "SELECT * FROM siswa WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
+                    $query = "SELECT * FROM siswa inner join kelas WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
                     $nis = $keyword;
                 }
                 ?>
@@ -171,6 +171,35 @@ $query = "SELECT * FROM siswa WHERE Nis = ''";
             </table>
         </div>
         <hr>
+        <?php
+        // Prints the day
+        echo $awaltempo = date("Y-07-d");
+
+
+        $bulanIndo = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+
+
+        for ($i = 0; $i < 36; $i++) {
+            $jatuhtempo = date("Y-m-d", strtotime("+$i month", strtotime($awaltempo)));
+        }
+
+
+        ?>
+
+
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
