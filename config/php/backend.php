@@ -166,3 +166,30 @@ function EditTarif($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function Editkelas($data)
+{
+  global $konek;
+  $id = $data['id'];
+  $tipe = $data['tipe'];
+  $jurusan = $data['jurusan'];
+  $kelas = $data['kelas'];
+  if ($kelas == 'bkn') {
+    echo "<script>
+      alert('Pilih Kelas')
+      document.location.href='../update/kelas.php?id=$id';
+      </script>";
+    exit;
+    die;
+  }
+  if ($tipe == 'bkn') {
+    echo "<script>
+      alert('Pilih Angkatan & tipe')
+      document.location.href='../update/kelas.php?id=$id';
+      </script>";
+    exit;
+    die;
+  }
+  $query = "UPDATE kelas SET idtarif='$tipe', kelas='$kelas', jurusan='$jurusan' WHERE idkelas ='$id'";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
