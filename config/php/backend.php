@@ -139,3 +139,30 @@ function UpdateSiswa($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function EditTarif($data)
+{
+  global $konek;
+  $id = $data['id'];
+  $Angkatan = $data['Angkatan'];
+  $Nominal = $data['Nominal'];
+  $kelas = $data['kelas'];
+  if ($Angkatan == 'bkn') {
+    echo "<script>
+      alert('Pilih Angkatan')
+      document.location.href='../update/tarif.php?id=$id';
+      </script>";
+    exit;
+    die;
+  }
+  if ($kelas == 'bkn') {
+    echo "<script>
+      alert('Pilih Tipe Kelas')
+      document.location.href='../update/tarif.php?id=$id';
+      </script>";
+    exit;
+    die;
+  }
+  $query = "UPDATE tarif SET Angkatan ='$Angkatan', tipe='$kelas',Nominal='$Nominal' WHERE id = '$id'";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
