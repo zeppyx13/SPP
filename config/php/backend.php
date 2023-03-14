@@ -108,34 +108,25 @@ function AddPegawai($data)
   return mysqli_affected_rows($konek);
 }
 // Update
-function UpdateSiswa($data)
+function EditSiswa($data)
 {
   global $konek;
   $nisn = $data['nisn'];
   $nis = $data['nis'];
   $kelas = $data['kelas'];
-  $angkatan = $data['angkatan'];
   $tlp = $data['tlp'];
   $pw = $data['password'];
   $nama = $data['nama'];
   $alamat = $data['alamat'];
-  if ($angkatan == 'bkn') {
-    echo "<script>
-      alert('Pilih Angkatan')
-      document.location.href='../add/siswa.php';
-      </script>";
-    exit;
-    die;
-  }
   if ($kelas == 'bkn') {
     echo "<script>
       alert('Pilih Kelas')
-      document.location.href='../add/siswa.php';
+      document.location.href='../update/siswa.php?id=$nis';
       </script>";
     exit;
     die;
   }
-  $query = "UPDATE siswa SET";
+  $query = "UPDATE siswa SET NISN='$nisn', idkelas='$kelas' , Nama_Siswa = '$nama', Tlp ='$tlp', Password ='$pw',Alamat = '$alamat' WHERE Nis = '$nis'";
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }

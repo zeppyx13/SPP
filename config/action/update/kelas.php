@@ -93,7 +93,7 @@ if (isset($_POST['add'])) {
                                 <input value="<?= $kelas['jurusan'] ?>" placeholder="jurursan" type="text" name="jurusan" id="Jurusan" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
-                        <button name="add" class="formbold-btn">Tambahkan</button>
+                        <button name="add" class="formbold-btn">Ubah</button>
                         <hr class="garis">
                         <a class="back" href="../../../admin/kelas.php">
                             <p>
