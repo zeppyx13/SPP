@@ -2,16 +2,18 @@
     font-family: 'Teko';
     src: url('../assets/font/Teko-Bold.ttf');
 }
+
 @font-face {
     font-family: 'Montserrat';
     src: url('../assets/font/Montserrat-VariableFont_wght.ttf');
 }
+
 :root {
-    --primary:#968C83;
+    --primary: #968C83;
     --second: #D6D2C4;
-    --text-color:black;
+    --text-color: black;
     --bg: white;
-    }
+}
 
 * {
     font-family: 'Montserrat';
@@ -24,10 +26,10 @@
 }
 
 body {
-    background-color:var(--bg);
+    background-color: var(--bg);
 }
 
-.nav-profile{
+.nav-profile {
     height: 70px;
     width: 100%;
     position: flex;
@@ -39,17 +41,18 @@ body {
 .nav-profile .profile {
     top: 8px;
     right: 20px;
-    position: fixed;
+    position: absolute;
 }
+
 .nav-profile .profile .nama {
     margin-top: 15px;
     float: left;
 }
 
-img.gbr{
+img.gbr {
     margin-top: 5px;
     margin-left: 20px;
-    max-width: 50px; 
+    max-width: 50px;
     max-height: 50px;
     border-radius: 100%;
 }
@@ -64,6 +67,7 @@ img.gbr{
     position: relative;
     justify-content: center;
 }
+
 .nav-profile .cari input {
     width: 400px;
     height: 30px;
@@ -71,6 +75,7 @@ img.gbr{
     padding: 12px;
     border: 3px solid #968c8381;
 }
+
 .nav-profile button.tombol-cari {
     background-color: var(--primary);
     border: 1px solid #aaa595;
@@ -80,14 +85,16 @@ img.gbr{
     border-radius: 5px;
     margin: 0 0 0 5px;
 }
+
 .nav-profile button .gbrcari {
-    width:15px; 
-    height:15px; 
-    margin-right:5px;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
     position: absolute;
     left: 415px;
     color: white;
 }
+
 .nav-profile button.tombol-cari:hover {
     background-color: var(--primary);
     border: 1px solid #aaa595;
@@ -113,12 +120,13 @@ img.gbr{
 
 .logo .a1 {
     float: left;
-    font-size:40px;
+    font-size: 40px;
     margin-left: 20%;
     margin-top: 15%;
     text-align: center;
     font-family: 'Teko';
 }
+
 .logo .a1 p {
     float: right;
     margin-bottom: 10px;
@@ -135,6 +143,7 @@ img.gbr{
     position: fixed;
     z-index: 99;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -151,18 +160,22 @@ li a {
     text-decoration: none;
     color: var(--text-color);
 }
+
 li a:hover {
     color: var(--bg);
-  }
-li a.active  {
-    fill:  var(--bg) !important;
-    color: var(--bg) !important;
-  }
-li a svg{
-    margin-right:5px;
-    width:15px; 
-    height:15px; 
 }
+
+li a.active {
+    fill: var(--bg) !important;
+    color: var(--bg) !important;
+}
+
+li a svg {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
+
 .logout a {
     color: var(--text-color);
     position: absolute;
@@ -173,40 +186,48 @@ li a svg{
 .logout :hover {
     color: var(--bg);
 }
+
 @media (min-width: 758px) {
     html {
         font-size: 80%;
     }
+
     .navbar .sidebar {
         height: 100%;
         width: 185px;
         left: 0;
     }
 }
+
 @media (min-width: 3440px) {
     html {
         font-size: 85%;
     }
+
     .navbar .sidebar {
         height: 100%;
         width: 10%;
         left: 0;
     }
 }
+
 @media (min-width: 1440px) {
     html {
         font-size: 85%;
     }
+
     .navbar .sidebar {
         height: 100%;
         width: 14%;
         left: 0;
     }
 }
+
 @media (max-width: 450px) {
     html {
         font-size: 75%;
     }
+
     .navbar .sidebar {
         height: 100%;
         width: 160px;

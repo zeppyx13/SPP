@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
@@ -96,7 +95,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                 <?php
                 if (isset($_POST["cari"])) {
                     $keyword = $_POST['keyword'];
-                    $query = "SELECT * FROM siswa inner join kelas WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
+                    $query = "SELECT * FROM siswa inner join kelas USING(idkelas) WHERE Nis like '%$keyword%' or NISN like '%$keyword'  LIMIT 1";
                     $nis = $keyword;
                 }
                 ?>
@@ -119,8 +118,6 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                 </form>
             </div>
             <ul>
-                <li>
-                </li>
                 <li>
                     <div class="profile">
                         <div class="nama">
@@ -145,6 +142,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                 <?php
                 $hasil = mysqli_query($konek, $query);
                 $row = mysqli_fetch_assoc($hasil);
+                $nis = $row['Nis'];
                 ?>
                 <thead>
                     <tr>
@@ -165,76 +163,91 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                     <tr>
                         <td class="jdl"><b>Kelas</b></td>
                         <td class="titik2">:</td>
-                        <td class="hasil"><?= $row['Kelas']; ?></td>
+                        <td class="hasil"><?= $row['kelas']; ?></td>
                     </tr>
                 <tbody>
             </table>
         </div>
         <hr>
-        <?php
-        // Prints the day
-        echo $awaltempo = date("Y-07-d");
-
-
-        $bulanIndo = [
-            '01' => 'Januari',
-            '02' => 'Februari',
-            '03' => 'Maret',
-            '04' => 'April',
-            '05' => 'Mei',
-            '06' => 'Juni',
-            '07' => 'Juli',
-            '08' => 'Agustus',
-            '09' => 'September',
-            '10' => 'Oktober',
-            '11' => 'November',
-            '12' => 'Desember',
-        ];
-
-
-        for ($i = 0; $i < 36; $i++) {
-            $jatuhtempo = date("Y-m-d", strtotime("+$i month", strtotime($awaltempo)));
-        }
-
-
-        ?>
-
-
         <div class="table-wrapper">
-            <table class="fl-table">
-                <thead>
-                    <tr>
-                        <th>Tahun</th>
-                        <th>Bulan</th>
-                        <th>Tanggal Bayar</th>
-                        <th>Jumlah</th>
-                        <th>No telp</th>
-                        <th>Nominal</th>
-                        <th>Keterangan</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $qcari = "SELECT * FROM pembayaran WHERE Nis =''";
-                    $data = query($qcari);
-                    ?>
-                    <?php $i = 1; ?>
-                    <?php foreach ($data as $row) : ?>
+            <?php
+            $tahun = date('Y');
+            if (@$row) {
+            ?>
+                <table class="fl-table">
+                    <thead>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><?= $data[''] ?></td>
-                            <td><?= $data[''] ?></td>
-                            <td><?= $data[''] ?></td>
-                            <td><a href="http://"><button>Bayar</button></a></td>
+                            <th>No</th>
+                            <th>Tahun</th>
+                            <th>Bulan</th>
+                            <th>Jatuh Tempo</th>
+                            <th>Tanggal Bayar</th>
+                            <th>Jumlah</th>
+                            <th>Keterangan</th>
+                            <th>Action</th>
                         </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
-                <tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $awaltempo = date("Y-07-d");
+                        $bulanIndo = [
+                            '01' => 'Januari',
+                            '02' => 'Februari',
+                            '03' => 'Maret',
+                            '04' => 'April',
+                            '05' => 'Mei',
+                            '06' => 'Juni',
+                            '07' => 'Juli',
+                            '08' => 'Agustus',
+                            '09' => 'September',
+                            '10' => 'Oktober',
+                            '11' => 'November',
+                            '12' => 'Desember',
+                        ];
+                        $bulanIEng = [
+                            '01' => 'Jan',
+                            '02' => 'Feb',
+                            '03' => 'Mar',
+                            '04' => 'Apr',
+                            '05' => 'Mei',
+                            '06' => 'May',
+                            '07' => 'Jun',
+                            '08' => 'Jul',
+                            '09' => 'Aug',
+                            '10' => 'oct',
+                            '11' => 'Nov',
+                            '12' => 'Dec',
+                        ];
+                        for ($i = 0; $i <= 36; $i++) {
+                            $jatuhtempo = date("Y-m-d", strtotime("+$i month", strtotime($awaltempo)));
+                            $bulan = $bulanIndo[date('M', strtotime($jatuhtempo))];
+                        ?>
+                            <tr>
+                                <td><?= $i + 1 ?></td>
+                                <?php
+                                $Dbayar = query("SELECT * from siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on tarif.id = kelas.idtarif WHERE nis='$nis'")[0];
+                                $Vbulan = query("SELECT * FROM pembayaran WHERE Month(Tgl) = '$bulan' ");
+                                if ($i < 7) {
+                                ?>
+                                    <td> <?= (int)$Dbayar['Angkatan']; ?></td>
+                                <?php } elseif ($i > 6 && $i < 19) { ?>
+                                    <td> <?= (int)$Dbayar['Angkatan'] + 1; ?></td>
+                                <?php } elseif ($i > 18 && $i < 31) { ?>
+                                    <td> <?= (int)$Dbayar['Angkatan'] + 2; ?></td>
+                                <?php } elseif ($i > 30 && $i < 37) { ?>
+                                    <td> <?= (int)$Dbayar['Angkatan'] + 3; ?></td>
+                                <?php } ?>
+                                <td><?= $bulan ?></td>
+                                <td>10-<?= $bulan ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="http://"><button>Bayar</button></a></td>
+                            </tr>
+                        <?php }; ?>
+                    </tbody>
+                </table>
+            <?php }; ?>
         </div>
     </div>
     <script src="p.js"></script>
