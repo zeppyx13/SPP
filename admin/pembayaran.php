@@ -247,18 +247,22 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                 $hasil = mysqli_fetch_assoc($Vbulan);
                                 $nominal = mysqli_fetch_assoc(mysqli_query($konek, "SELECT nominal FROM siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on kelas.idtarif=tarif.id WHERE nis='$nis'"));
                                 $cek_bulan = mysqli_num_rows($Vbulan);
+                                $jumlah  = number_format($hasil['Jumlah'], 0, ',', '.');
+                                $fnominal = number_format($nominal['nominal'], 0, ',', '.');
+                                // $nominal = $nominal['nominal'];
+
                                 ?>
                                 <td><?= $hasil['Tgl']; ?></td>
                                 <td>
                                     <?php
                                     if (@$cek_bulan) {
-                                        echo $hasil['Jumlah'];
+                                        echo 'Rp. ', $jumlah;
                                     } else {
-                                        echo $nominal['nominal'];
+                                        echo 'Rp. ', $fnominal;
                                     }
                                     ?>
                                 </td>
-                                <td> <?= $hasil['keterangan']; ?>
+                                <td>
                                     <?php
                                     if (@$cek_bulan) {
                                         echo $hasil['keterangan'];
