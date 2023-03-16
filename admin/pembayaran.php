@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
@@ -204,45 +205,76 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                             '11' => 'November',
                             '12' => 'Desember',
                         ];
-                        $bulanIEng = [
-                            '01' => 'Jan',
-                            '02' => 'Feb',
-                            '03' => 'Mar',
-                            '04' => 'Apr',
-                            '05' => 'Mei',
-                            '06' => 'May',
-                            '07' => 'Jun',
-                            '08' => 'Jul',
-                            '09' => 'Aug',
-                            '10' => 'oct',
-                            '11' => 'Nov',
-                            '12' => 'Dec',
+                        $bulanEng = [
+                            'Jan' => '01',
+                            'Feb' => '02',
+                            'Mar' => '03',
+                            'Apr' => '04',
+                            'May' => '05',
+                            'Jun' => '06',
+                            'Jul' => '07',
+                            'Aug' => '08',
+                            'Sep' => '09',
+                            'Oct' => '10',
+                            'Nov' => '11',
+                            'Dec' => '12',
                         ];
-                        for ($i = 0; $i <= 36; $i++) {
+                        for ($i = 0; $i <= 35; $i++) {
                             $jatuhtempo = date("Y-m-d", strtotime("+$i month", strtotime($awaltempo)));
-                            $bulan = $bulanIndo[date('M', strtotime($jatuhtempo))];
+                            $bulan = $bulanIndo[date('m', strtotime($jatuhtempo))];
+                            $bulanvald = $bulanEng[date('M', strtotime($jatuhtempo))];
                         ?>
                             <tr>
                                 <td><?= $i + 1 ?></td>
                                 <?php
-                                $Dbayar = query("SELECT * from siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on tarif.id = kelas.idtarif WHERE nis='$nis'")[0];
-                                $Vbulan = query("SELECT * FROM pembayaran WHERE Month(Tgl) = '$bulan' ");
+                                // global $tahunBayar;
+                                $Dbayar = query("SELECT * from siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on tarif.id = kelas.idtarif WHERE Nis='$nis'")[0];
+                                // var_dump($bulanvald, $nis, $tahunBayar);
                                 if ($i < 7) {
                                 ?>
-                                    <td> <?= (int)$Dbayar['Angkatan']; ?></td>
+                                    <td><?= $tahunBayar = (int)$Dbayar['Angkatan']; ?></td>
                                 <?php } elseif ($i > 6 && $i < 19) { ?>
-                                    <td> <?= (int)$Dbayar['Angkatan'] + 1; ?></td>
+                                    <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 1; ?></td>
                                 <?php } elseif ($i > 18 && $i < 31) { ?>
-                                    <td> <?= (int)$Dbayar['Angkatan'] + 2; ?></td>
+                                    <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 2; ?></td>
                                 <?php } elseif ($i > 30 && $i < 37) { ?>
-                                    <td> <?= (int)$Dbayar['Angkatan'] + 3; ?></td>
+                                    <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 3; ?></td>
                                 <?php } ?>
                                 <td><?= $bulan ?></td>
                                 <td>10-<?= $bulan ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="http://"><button>Bayar</button></a></td>
+                                <?php
+                                $Vbulan = mysqli_query($konek, "SELECT * FROM pembayaran WHERE Month(Tgl) = '$bulanvald' AND Nis = '$nis' AND Year(Tgl)='$tahunBayar'");
+                                $hasil = mysqli_fetch_assoc($Vbulan);
+                                $nominal = mysqli_fetch_assoc(mysqli_query($konek, "SELECT nominal FROM siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on kelas.idtarif=tarif.id WHERE nis='$nis'"));
+                                $cek_bulan = mysqli_num_rows($Vbulan);
+                                ?>
+                                <td><?= $hasil['Tgl']; ?></td>
+                                <td>
+                                    <?php
+                                    if (@$cek_bulan) {
+                                        echo $hasil['Jumlah'];
+                                    } else {
+                                        echo $nominal['nominal'];
+                                    }
+                                    ?>
+                                </td>
+                                <td> <?= $hasil['keterangan']; ?>
+                                    <?php
+                                    if (@$cek_bulan) {
+                                        echo $hasil['keterangan'];
+                                    } else {
+                                        echo "Belum Lunas";
+                                    }
+                                    ?></td>
+                                <td>
+                                    <?php
+                                    if (!$cek_bulan > 0) {
+                                    ?>
+                                        <a href=""><button>Bayar</button></a>
+                                    <?php
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php }; ?>
                     </tbody>
