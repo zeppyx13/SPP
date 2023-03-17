@@ -3,14 +3,32 @@ session_start();
 require '../../php/backend.php';
 $nis = $_GET['nis'];
 $bulan = $_GET['bulan'];
+$bulanIndo = [
+    '01' => 'Januari',
+    '02' => 'Februari',
+    '03' => 'Maret',
+    '04' => 'April',
+    '05' => 'Mei',
+    '06' => 'Juni',
+    '07' => 'Juli',
+    '08' => 'Agustus',
+    '09' => 'September',
+    '10' => 'Oktober',
+    '11' => 'November',
+    '12' => 'Desember',
+];
+$nip = $_SESSION['id_petugas'];
+$petugas = query("SELECT * FROM petugas WHERE NIP = '$nip'")[0];
+$bulanid = $bulanIndo[$bulan];
 $tahun = $_GET['tahun'];
 $tglbyr = date('Y-m-d');
 $siswa = query("SELECT * FROM siswa inner join kelas USING(idkelas) inner join tarif on kelas.idtarif = tarif.id where Nis = '$nis' ")[0];
 $nominal = "Rp. " . number_format($siswa['Nominal'], 0, ',', '.');
+$namaSiswa = $siswa['Nama_Siswa'];
 if (isset($_POST['add'])) {
-    if (AddSiswa($_POST) > 0) {
+    if (Addpembayaran($_POST) > 0) {
         echo "<script>
-      alert('')
+      alert('Pembayaran atas nama siswa $namaSiswa');
       document.location.href='../../../admin/siswa.php';
       </script>";
     } else {
@@ -35,6 +53,10 @@ if (isset($_POST['add'])) {
             <div class="formbold-main-wrapper">
                 <div class="formbold-form-wrapper">
                     <form action="" method="POST">
+                        <input type="date" value="<?= $tahun, '-', $bulan, '-', date('d') ?>" name="tgl">
+                        <input name="id" type="hidden" value="<?= $nis, $bulan, $tahun, date('d') ?>">
+                        <input type="hidden" name="nip" value="<?= $petugas['NIP'] ?>">
+                        <input type="hidden" name="namapetugas" value="<?= $petugas['Nama_Petugas'] ?>">
                         <div class="formbold-form-title">
                             <h2 class="judul">Data Pembayaran</h2>
                         </div>
@@ -63,11 +85,11 @@ if (isset($_POST['add'])) {
                         <div class="formbold-input-flex">
                             <div>
                                 <label for="tlp" class="formbold-form-label"> Tahun Yang Dibayar : </label>
-                                <input readonly value="<?= $tahun ?>" type="text" name="tglbyr" id="tlp" class="formbold-form-input" autocomplete="off" required />
+                                <input readonly value="<?= $tahun ?>" type="text" id="tlp" class="formbold-form-input" autocomplete="off" required />
                             </div>
                             <div>
                                 <label for="password" class="formbold-form-label"> Bulan Yang Dibayar : </label>
-                                <input readonly type="text" value="<?= $bulan ?>" name="password" id="password" class="formbold-form-input" autocomplete="off" required />
+                                <input readonly type="text" value="<?= $bulanid ?>" id="password" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
                         <div class="formbold-mb-3">

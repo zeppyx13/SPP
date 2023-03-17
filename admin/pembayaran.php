@@ -274,7 +274,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                     <?php
                                     if (!$cek_bulan > 0) {
                                     ?>
-                                        <a href="../config/action/add/pembayaran.php?bulan=<?= $bulan ?>&nis=<?= $nis ?>&tahun=<?= $tahunBayar ?> "><button class="insert-pembayaran">Bayar</button></a>
+                                        <a href="../config/action/add/pembayaran.php?bulan=<?= $bulanvald ?>&nis=<?= $nis ?>&tahun=<?= $tahunBayar ?> "><button class="insert-pembayaran">Bayar</button></a>
                                     <?php
                                     } else {
                                     ?>
