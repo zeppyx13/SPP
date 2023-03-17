@@ -182,7 +182,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                             <th>Tahun</th>
                             <th>Bulan</th>
                             <th>Jatuh Tempo</th>
-                            <th>Tanggal Bayar</th>
+                            <th>Tanggal Pembayar</th>
                             <th>Jumlah</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -252,7 +252,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                 // $nominal = $nominal['nominal'];
 
                                 ?>
-                                <td><?= $hasil['Tgl']; ?></td>
+                                <td><?= $hasil['Tgl_Bayar']; ?></td>
                                 <td>
                                     <?php
                                     if (@$cek_bulan) {
@@ -274,7 +274,11 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                     <?php
                                     if (!$cek_bulan > 0) {
                                     ?>
-                                        <a href=""><button>Bayar</button></a>
+                                        <a href="../config/action/add/pembayaran.php?bulan=<?= $bulan ?>&nis=<?= $nis ?>&tahun=<?= $tahunBayar ?> "><button class="insert-pembayaran">Bayar</button></a>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img src="../assets/emoticon/svg/regular/bx-check-circle.svg" alt="">
                                     <?php
                                     }
                                     ?>

@@ -1,8 +1,9 @@
-body{
+body {
     overflow-y: hidden;
     overflow-x: hidden;
 }
-.container{
+
+.container {
     justify-content: center;
     align-items: flex-start;
     width: 100%;
@@ -12,20 +13,23 @@ body{
     flex-direction: row;
     margin-left: 6%;
 }
-.container .wrapper{
+
+.container .wrapper {
     text-align: center;
     margin-bottom: 20%;
     display: flex;
     width: 1000px;
     height: 500px;
 }
-.subjudul{
+
+.subjudul {
     margin-left: 10%;
     margin-top: 100px;
     text-align: center;
     margin-bottom: 5%;
 }
-.container .wrapper .info{
+
+.container .wrapper .info {
 
     text-align: center;
     box-shadow: 5px 5px 5px #9a9999d1;
@@ -37,17 +41,20 @@ body{
     height: 33%;
     width: 40%;
 }
-.container .wrapper .info-1{
-    background:linear-gradient(to right,#8E806A, #C3B091);
+
+.container .wrapper .info-1 {
+    background: linear-gradient(to right, #8E806A, #C3B091);
 }
-.container .wrapper .info-2{
-    background:linear-gradient(to right,#C3B091, #E4CDA7);
+
+.container .wrapper .info-2 {
+    background: linear-gradient(to right, #C3B091, #E4CDA7);
 }
-.container .wrapper .info-3{
-    padding: 20px;
-    background:linear-gradient(to right,#E4CDA7, #ffe6bc);
+
+.container .wrapper .info-3 {
+    background: linear-gradient(to right, #E4CDA7, #ffe6bc);
 }
-h2.no{
+
+h2.no {
     font-size: xx-large;
     margin-top: 10%;
     max-width: 300px;

@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../../php/backend.php';
-$years = range(2006, 2100);
 $qtarif = query("SELECT * FROM tarif ORDER BY Angkatan ASC");
 if (isset($_POST['add'])) {
     if (AddKelas($_POST) > 0) {

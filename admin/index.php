@@ -10,9 +10,9 @@ $nama = $_SESSION['nama'];
 $siswa = query("SELECT * FROM Siswa");
 $transaksi = query("SELECT Tgl FROM pembayaran WHERE MONTH(Tgl)='$tgl'");
 $Ctang = count($transaksi);
-$pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran")[0];
+$pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran WHERE MONTH(Tgl)='$tgl'")[0];
 $apend =  $pendapatan["total"];
-$fpendapatan = "" . number_format($apend, 0, ',', '.');
+$fpendapatan = number_format($apend, 0, ',', '.');
 $jmlS = count($siswa);
 ?>
 <!DOCTYPE html>
@@ -125,11 +125,11 @@ $jmlS = count($siswa);
                 <h2 class="no"><b><?= $jmlS ?></b></h2>
             </div>
             <div class="info info-2">
-                <h2>Transaksi :</h2>
+                <h2>Transaksi bulain ini:</h2>
                 <h2 class="no"><b> <?= $Ctang ?></b></h2>
             </div>
             <div class="info info-3">
-                <h2>Pemasukan :</h2>
+                <h2>Pembayaran bulan ini:</h2>
                 <h2 class="no"><b><?= $fpendapatan ?></b></h2>
             </div>
         </div>
