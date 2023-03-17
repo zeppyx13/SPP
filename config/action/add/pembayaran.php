@@ -27,10 +27,17 @@ $nominal = "Rp. " . number_format($siswa['Nominal'], 0, ',', '.');
 $namaSiswa = $siswa['Nama_Siswa'];
 if (isset($_POST['add'])) {
     if (Addpembayaran($_POST) > 0) {
-        echo "<script>
-      alert('Pembayaran atas nama siswa $namaSiswa');
-      document.location.href='../../../admin/siswa.php';
+        if ($_SESSION['admin']) {
+            echo "<script>
+      alert('Pembayaran atas nama siswa $namaSiswa Berhasil');
+      document.location.href='../../../admin/pembayaran.php';
       </script>";
+        } elseif ($_SESSION['petugas']) {
+            echo "<script>
+      alert('Pembayaran atas nama siswa $namaSiswa Berhasil');
+      document.location.href='../../../petugas/pembayaran.php';
+      </script>";
+        };
     } else {
         echo mysqli_error($konek);
     }
@@ -53,10 +60,11 @@ if (isset($_POST['add'])) {
             <div class="formbold-main-wrapper">
                 <div class="formbold-form-wrapper">
                     <form action="" method="POST">
-                        <input type="date" value="<?= $tahun, '-', $bulan, '-', date('d') ?>" name="tgl">
+                        <input type="hidden" value="<?= $tahun, '-', $bulan, '-', date('d') ?>" name="tgl">
                         <input name="id" type="hidden" value="<?= $nis, $bulan, $tahun, date('d') ?>">
                         <input type="hidden" name="nip" value="<?= $petugas['NIP'] ?>">
                         <input type="hidden" name="namapetugas" value="<?= $petugas['Nama_Petugas'] ?>">
+                        <input type="hidden" name="Nominal" value="<?= $siswa['Nominal'] ?>">
                         <div class="formbold-form-title">
                             <h2 class="judul">Data Pembayaran</h2>
                         </div>
@@ -74,31 +82,31 @@ if (isset($_POST['add'])) {
                         </div>
                         <div class="formbold-input-flex">
                             <div>
-                                <label for="tlp" class="formbold-form-label"> Tanggal Pembayaran : </label>
-                                <input readonly value="<?= $tglbyr ?>" type="date" name="tglbyr" id="tlp" class="formbold-form-input" autocomplete="off" required />
+                                <label for="tglbyr" class="formbold-form-label"> Tanggal Pembayaran : </label>
+                                <input readonly value="<?= $tglbyr ?>" type="date" name="tglbyr" id="tglbyr" class="formbold-form-input" autocomplete="off" required />
                             </div>
                             <div>
-                                <label for="password" class="formbold-form-label"> Angkatan : </label>
-                                <input readonly value="<?= $siswa['Angkatan'] ?>" type="text" name="Angkatan" id="password" class="formbold-form-input" autocomplete="off" required />
+                                <label for="Angkatan" class="formbold-form-label"> Angkatan : </label>
+                                <input readonly value="<?= $siswa['Angkatan'] ?>" type="text" name="Angkatan" id="Angkatan" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
                         <div class="formbold-input-flex">
                             <div>
-                                <label for="tlp" class="formbold-form-label"> Tahun Yang Dibayar : </label>
-                                <input readonly value="<?= $tahun ?>" type="text" id="tlp" class="formbold-form-input" autocomplete="off" required />
+                                <label for="tahun" class="formbold-form-label"> Tahun Yang Dibayar : </label>
+                                <input readonly value="<?= $tahun ?>" type="text" id="tahun" class="formbold-form-input" autocomplete="off" required />
                             </div>
                             <div>
-                                <label for="password" class="formbold-form-label"> Bulan Yang Dibayar : </label>
-                                <input readonly type="text" value="<?= $bulanid ?>" id="password" class="formbold-form-input" autocomplete="off" required />
+                                <label for="bulan" class="formbold-form-label"> Bulan Yang Dibayar : </label>
+                                <input readonly type="text" value="<?= $bulanid ?>" id="bulan" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
                         <div class="formbold-mb-3">
                             <div>
                                 <label for="Nominal" class="formbold-form-label"> Nominal : </label>
-                                <input readonly value="<?= $nominal ?>" type="text" name="Nominal" id="Nominal" class="formbold-form-input" autocomplete="off" required />
+                                <input readonly value="<?= $nominal ?>" type="text" id="Nominal" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
-                        <button name="add" class="formbold-btn">Bayar</button>
+                        <button onclick="return confirm('Yakin melakukan pembayaran siswa : <?= $siswa['Nama_Siswa'] ?> ?')" name="add" class="formbold-btn">Bayar</button>
                         <hr class="garis">
                         <a class="back" href="<?php
                                                 if ($_SESSION['admin']) {

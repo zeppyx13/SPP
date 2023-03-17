@@ -107,6 +107,22 @@ function AddPegawai($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function Addpembayaran($data)
+{
+  global $konek;
+  $Nis = $data['nis'];
+  $Nama = $data['nama']; //nama siswa
+  $Tgl = $data['tgl']; // tanggal spp yang di bayar
+  $Id = $data['id'];
+  $Nip = $data['nip'];
+  $NamaPetugas = $data['namapetugas'];
+  $TglBayar = $data['tglbyr']; //tanggal dilakukan nya pembayaran
+  $Angkatan = $data['Angkatan'];
+  $Nominal = $data['Nominal'];
+  $query = "INSERT INTO pembayaran VALUES('$Id','$Nominal','$Tgl', '$TglBayar','$Nama','$NamaPetugas','$Angkatan','$Nip','$Nis','Lunas')";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
 // Update
 function EditSiswa($data)
 {

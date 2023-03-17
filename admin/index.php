@@ -116,7 +116,7 @@ $jmlS = count($siswa);
         </div>
     </aside>
     <div class="subjudul">
-        <h2>👋Hai, Welcome Back!</h2>
+        <h2>👋Hai, Selamat Datang!</h2>
     </div>
     <div class="container">
         <div class="wrapper">
