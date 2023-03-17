@@ -1,14 +1,17 @@
 <?php
 session_start();
+setlocale(LC_ALL, 'IND');
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
 $nama = $_SESSION['nama'];
-$query = "SELECT MONTH(Tgl),Year(Tgl),Day(Tgl),IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.Angkatan, pembayaran.Jumlah, siswa.Kelas FROM pembayaran INNER JOIN siswa USING(Nis);";
-$data = query($query);
-$no = 1;
+$mintahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl ASC')[0];
+$maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
+$years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
+// $query = "SELECT MONTH(Tgl),Year(Tgl),Day(Tgl),IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.Angkatan, pembayaran.Jumlah, siswa.Kelas FROM pembayaran INNER JOIN siswa USING(Nis);";
+// $data = query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +22,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
     <link rel="stylesheet" href="../style/table.css">
-    <title>Dashboard || History</title>
+    <title>Dashboard || Riwayat</title>
 </head>
 
 <body>
@@ -117,9 +120,35 @@ $no = 1;
     </aside>
 
     <div class="table">
-        <h2>History Pembayaran</h2>
+        <h2>Riwayat Pembayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
+                <div class="form-cari">
+                    <form action="" method="post">
+                        <select id="bulan" name="bulan" class="select-bulan">
+                            <option value="">-Pilih Bulan-</option>
+                            <option value="01">Januari</option>
+                            <option value="02">Februari</option>
+                            <option value="03">Maret</option>
+                            <option value="04">April</option>
+                            <option value="05">Mei</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">Agustus</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                        <select name="tahun" class="select-tahun">
+                            <option value="">-Pilih Tahun</option>
+                            <?php foreach ($years as $year) : ?>
+                                <option value="<?= $year; ?>"><?= $year; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" name="cari" class="tombol-cari">Cari</button>
+                    </form>
+                </div>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -129,30 +158,26 @@ $no = 1;
                         <th>Nama petugas</th>
                         <th>Kelas</th>
                         <th>Angkatan</th>
-                        <th>Tanggal</th>
+                        <th>Tanggal pembayaran</th>
                         <th>Bulan</th>
-                        <th>Tahun </th>
+                        <th>Tahun</th>
                         <th>Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($data as $row) : ?>
-                        <tr>
-                            <td><?= $i ?></td>
-                            <td><?= $row['IdPembayaran']; ?></td>
-                            <td><?= $row['Nis']; ?></td>
-                            <td><?= $row['Nama_Siswa']; ?></td>
-                            <td><?= $row['Nama_Petugas']; ?></td>
-                            <td><?= $row['Kelas']; ?></td>
-                            <td><?= $row['Angkatan']; ?></td>
-                            <td><?= $row['Day(Tgl)'] ?></td>
-                            <td><?= $row['MONTH(Tgl)'] ?></td>
-                            <td><?= $row['Year(Tgl)'] ?></td>
-                            <td><?= $row['Jumlah'] ?></td>
-                        </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 <tbody>
             </table>
         </div>

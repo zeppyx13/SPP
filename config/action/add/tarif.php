@@ -41,7 +41,7 @@ if (isset($_POST['add'])) {
                                 <select required class="formbold-form-input" id="Angkatan" name="Angkatan">
                                     <option value="bkn">-Pilih Angkatan-</option>
                                     <?php foreach ($years as $year) : ?>
-                                        <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                                        <option value="<?= $year; ?>"><?= $year; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
