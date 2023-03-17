@@ -252,7 +252,14 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                 // $nominal = $nominal['nominal'];
 
                                 ?>
-                                <td><?= $hasil['Tgl_Bayar']; ?></td>
+                                <td><?php
+                                    $tgl = $hasil['Tgl_Bayar'];
+                                    if (@$cek_bulan) {
+                                        echo $tgl;
+                                    } else {
+                                        echo '-';
+                                    }
+                                    ?>
                                 <td>
                                     <?php
                                     if (@$cek_bulan) {
