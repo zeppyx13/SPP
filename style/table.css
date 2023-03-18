@@ -148,6 +148,48 @@ svg.icon-hps {
   height: 24px;
 }
 
+.form-cari {
+  position: relative;
+  margin: 0 0 15px 0;
+}
+
+.select-tahun {
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: grey;
+  color: white;
+  box-shadow: 0 0 3PX 0 black;
+}
+
+.select-bulan {
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: grey;
+  color: white;
+  box-shadow: 0 0 3PX 0 black;
+}
+
+.tombol-cari {
+  text-align: center;
+  width: 90px;
+  margin-left: 5px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: grey;
+  box-shadow: 0 0 3PX 0 black;
+  color: white;
+  cursor: pointer;
+}
+
+.tombol-cari:hover {
+  background-color: grey;
+  opacity: 0.8;
+}
+
 @media (max-width: 767px) {
   .fl-table {
     display: block;

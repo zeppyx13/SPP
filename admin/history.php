@@ -12,6 +12,12 @@ $maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
 $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
 // $query = "SELECT MONTH(Tgl),Year(Tgl),Day(Tgl),IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.Angkatan, pembayaran.Jumlah, siswa.Kelas FROM pembayaran INNER JOIN siswa USING(Nis);";
 // $data = query($query);
+if (isset($_POST["cari"])) {
+    var_dump($_POST['tahun'], $_POST['bulan']);
+    echo 'if';
+} else {
+    $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas)");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,15 +124,14 @@ $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
             </ul>
         </div>
     </aside>
-
     <div class="table">
         <h2>Riwayat Pembayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
                 <div class="form-cari">
-                    <form action="" method="post">
+                    <form action="" name="formcri" method="POST">
                         <select id="bulan" name="bulan" class="select-bulan">
-                            <option value="">-Pilih Bulan-</option>
+                            <option selected value=" ">-Semua Bulan-</option>
                             <option value="01">Januari</option>
                             <option value="02">Februari</option>
                             <option value="03">Maret</option>
@@ -141,12 +146,17 @@ $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
                             <option value="12">Desember</option>
                         </select>
                         <select name="tahun" class="select-tahun">
-                            <option value="">-Pilih Tahun</option>
+                            <option selected value=" ">-Semua Tahun</option>
                             <?php foreach ($years as $year) : ?>
                                 <option value="<?= $year; ?>"><?= $year; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button type="submit" name="cari" class="tombol-cari">Cari</button>
+                        <button type="submit" name="cari" class="tombol-cari">
+                            <svg xmlns="http://www.w3.org/2000/svg" width='15px' height='15px' fill="white" viewBox="0 0 24 24">
+                                <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
+                            </svg>
+                            Cari
+                        </button>
                     </form>
                 </div>
                 <thead>
@@ -165,19 +175,40 @@ $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($query as $row) :
+                        $bulanIndo = [
+                            '1' => 'Januari',
+                            '2' => 'Februari',
+                            '3' => 'Maret',
+                            '4' => 'April',
+                            '5' => 'Mei',
+                            '6' => 'Juni',
+                            '7' => 'Juli',
+                            '8' => 'Agustus',
+                            '9' => 'September',
+                            '10' => 'Oktober',
+                            '11' => 'November',
+                            '12' => 'Desember',
+                        ];
+                        $vbulan = $row['bulan'];
+                        $bulan = $bulanIndo["$vbulan"];
+                    ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?= $row['IdPembayaran'] ?></td>
+                            <td><?= $row['Nis'] ?></td>
+                            <td><?= $row['Nama_Siswa'] ?></td>
+                            <td><?= $row['Nama_Petugas'] ?> </td>
+                            <td><?= $row['kelas'] ?></td>
+                            <td><?= $row['Angkatan'] ?></td>
+                            <td><?= $row['Tgl_Bayar'] ?></td>
+                            <td><?= $bulan ?></td>
+                            <td><?= $row['tahun'] ?></td>
+                            <td><?= $row['Jumlah'] ?></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 <tbody>
             </table>
         </div>
