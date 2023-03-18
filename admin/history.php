@@ -1,6 +1,5 @@
 <?php
 session_start();
-setlocale(LC_ALL, 'IND');
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
@@ -10,11 +9,20 @@ $nama = $_SESSION['nama'];
 $mintahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl ASC')[0];
 $maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
 $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
-// $query = "SELECT MONTH(Tgl),Year(Tgl),Day(Tgl),IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.Angkatan, pembayaran.Jumlah, siswa.Kelas FROM pembayaran INNER JOIN siswa USING(Nis);";
-// $data = query($query);
 if (isset($_POST["cari"])) {
-    var_dump($_POST['tahun'], $_POST['bulan']);
-    echo 'if';
+    if ($_POST['bulan'] == 'all' && $_POST['tahun'] == 'all') {
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas)");
+    } elseif ($_POST['tahun'] == 'all') {
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE MONTH(pembayaran.Tgl) = '$bulanvald'");
+    } elseif ($_POST['bulan'] == 'all') {
+        $tahunvald = $_POST['tahun'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald'");
+    } else {
+        $tahunvald = $_POST['tahun'];
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' AND MONTH(pembayaran.Tgl) = '$bulanvald'");
+    }
 } else {
     $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas)");
 }
@@ -131,7 +139,7 @@ if (isset($_POST["cari"])) {
                 <div class="form-cari">
                     <form action="" name="formcri" method="POST">
                         <select id="bulan" name="bulan" class="select-bulan">
-                            <option selected value=" ">-Semua Bulan-</option>
+                            <option selected value="all">-Semua Bulan-</option>
                             <option value="01">Januari</option>
                             <option value="02">Februari</option>
                             <option value="03">Maret</option>
@@ -146,7 +154,7 @@ if (isset($_POST["cari"])) {
                             <option value="12">Desember</option>
                         </select>
                         <select name="tahun" class="select-tahun">
-                            <option selected value=" ">-Semua Tahun</option>
+                            <option selected value="all">-Semua Tahun</option>
                             <?php foreach ($years as $year) : ?>
                                 <option value="<?= $year; ?>"><?= $year; ?></option>
                             <?php endforeach; ?>
