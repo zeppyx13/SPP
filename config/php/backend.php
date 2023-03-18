@@ -119,7 +119,7 @@ function Addpembayaran($data)
   $TglBayar = $data['tglbyr']; //tanggal dilakukan nya pembayaran
   $Angkatan = $data['Angkatan'];
   $Nominal = $data['Nominal'];
-  $query = "INSERT INTO pembayaran VALUES('$Id','$Nominal','$Tgl', '$TglBayar','$Nama','$NamaPetugas','$Angkatan','$Nip','$Nis','Lunas')";
+  $query = "INSERT INTO pembayaran VALUES('','$Id','$Nominal','$Tgl', '$TglBayar','$Nama','$NamaPetugas','$Angkatan','$Nip','$Nis','Lunas')";
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }

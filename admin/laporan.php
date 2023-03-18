@@ -5,6 +5,10 @@ if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
+$jurusan = query("SELECT DISTINCT jurusan FROM kelas");
+$mintahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl ASC')[0];
+$maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
+$years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
 $nama = $_SESSION['nama'];
 $query = "SELECT * FROM pembayaran;";
 $data = query($query);
@@ -122,17 +126,57 @@ $no = 1;
         <h2>Laporan Pembayaran</h2>
         <div class="table-wrapper">
             <table class="fl-table">
+                <div class="form-cari">
+                    <form action="" name="formcri" method="POST">
+                        <select id="bulan" name="bulan" class="select-bulan">
+                            <option selected value="all">-Semua Bulan-</option>
+                            <option value="01">Januari</option>
+                            <option value="02">Februari</option>
+                            <option value="03">Maret</option>
+                            <option value="04">April</option>
+                            <option value="05">Mei</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">Agustus</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                        <select name="tahun" class="select-tahun">
+                            <option selected value="all">-Semua Tahun</option>
+                            <?php foreach ($years as $year) : ?>
+                                <option value="<?= $year; ?>"><?= $year; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <select name="jurusan" class="select-tahun" id="">
+                            <?php foreach ($jurusan as $jurusan) : ?>
+                                <option value="<?= $jurusan['jurusan'] ?>"><?= $jurusan['jurusan'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" name="cari" class="tombol-cari">
+                            <svg xmlns="http://www.w3.org/2000/svg" width='15px' height='15px' fill="white" viewBox="0 0 24 24">
+                                <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
+                            </svg>
+                            Cari
+                        </button>
+                    </form>
+                </div>
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>NIP</th>
+                        <th>No</th>
+                        <th>Id Pembayaran</th>
                         <th>NIS</th>
-                        <th>jumlah</th>
                         <th>Nama Siswa</th>
-                        <th>Nama Petugas</th>
+                        <th>Nama petugas</th>
+                        <th>Kelas</th>
                         <th>Angkatan</th>
+                        <th>Tgl pembayaran</th>
+                        <th>Bulan</th>
+                        <th>Tahun</th>
+                        <th>Jumlah</th>
+                        <th>Ket</th>
                     </tr>
-                </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>

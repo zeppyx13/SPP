@@ -11,20 +11,20 @@ $maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
 $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
 if (isset($_POST["cari"])) {
     if ($_POST['bulan'] == 'all' && $_POST['tahun'] == 'all') {
-        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas)");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) ORDER BY No DESC");
     } elseif ($_POST['tahun'] == 'all') {
         $bulanvald = $_POST['bulan'];
-        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE MONTH(pembayaran.Tgl) = '$bulanvald'");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE MONTH(pembayaran.Tgl) = '$bulanvald' ORDER BY No DESC");
     } elseif ($_POST['bulan'] == 'all') {
         $tahunvald = $_POST['tahun'];
-        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald'");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' ORDER BY No DESC");
     } else {
         $tahunvald = $_POST['tahun'];
         $bulanvald = $_POST['bulan'];
-        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' AND MONTH(pembayaran.Tgl) = '$bulanvald'");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' AND MONTH(pembayaran.Tgl) = '$bulanvald' ORDER BY No DESC");
     }
 } else {
-    $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas)");
+    $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) ORDER BY No DESC");
 }
 ?>
 <!DOCTYPE html>
