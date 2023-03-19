@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
@@ -22,7 +23,7 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/asidenav.css">
-    <link rel="stylesheet" href="../style/table.css">
+    <link rel="stylesheet" href="../style/print.css">
     <title>Dashboard || Laporan</title>
 </head>
 
@@ -159,12 +160,15 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             Cari
                         </button>
                     </form>
-                    <?php
-                    $jurusan = $_POST['jurusan'];
-                    $bulan = $_POST['bulan'];
-                    $siswa = "SELECT * FROM siswa inner join kelas using (idkelas) INNER JOIN tarif on kelas.idtarif = tarif.id WHERE jurusan='$jurusan'";
-                    ?>
+                    <button onclick="PRINT()" class="btn-print">
+                        <p>PRINT</p>
+                    </button>
                 </div>
+                <?php
+                $jurusan = $_POST['jurusan'];
+                $bulan = $_POST['bulan'];
+                $siswa = "SELECT * FROM siswa inner join kelas using (idkelas) INNER JOIN tarif on kelas.idtarif = tarif.id WHERE jurusan='$jurusan'";
+                ?>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -177,7 +181,6 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                         <th>keterangan</th>
                         <th>Tanggal Bayar</th>
                         <th>Jumlah</th>
-                        <!-- SELECT * FROM pembayaran inner join siswa using(Nis) inner join petugas using(Nip) inner join kelas using(idkelas) -->
                     </tr>
                 </thead>
                 <tbody>
@@ -276,7 +279,11 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
         </div>
     </div>
 
-    <script src="p.js"></script>
+    <script>
+        function PRINT() {
+            window.print();
+        }
+    </script>
 </body>
 
 </html>
