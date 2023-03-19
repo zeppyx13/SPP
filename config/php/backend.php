@@ -1,5 +1,5 @@
 <?php
-$konek = mysqli_connect('localhost', 'root', '', 'test');
+$konek = mysqli_connect('localhost', 'root', '', 'uk_spp');
 
 function query($query)
 {

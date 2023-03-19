@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require '../config/php/backend.php';
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
