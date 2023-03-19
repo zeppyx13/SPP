@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
         $_SESSION['petugas'] = true;
         $_SESSION['nama'] = $dta['Nama_Petugas'];
         $_SESSION['level'] = $dta['Jabatan'];
-        echo "<script>window.location='../../admin/'</script>";
+        echo "<script>window.location='../../petugas/'</script>";
     } elseif (mysqli_num_rows($qsiswa) > 0) {
         $dta = mysqli_fetch_assoc($qsiswa);
         $_SESSION['siswa'] = true;

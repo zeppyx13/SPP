@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 require '../config/php/backend.php';
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['petugas'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
@@ -40,31 +40,6 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                             </a>
                         </li>
                         <li>
-                            <a href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Siswa</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./pegawai.php">
-                                <img src="../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Petugas</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./tarif.php">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
-                                    <path d="M4 21h15.893c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zm0-2v-5h4v5H4zM14 7v5h-4V7h4zM8 7v5H4V7h4zm2 12v-5h4v5h-4zm6 0v-5h3.894v5H16zm3.893-7H16V7h3.893v5z" />
-                                </svg>
-                                <b>Tabel SPP</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./kelas.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-user-detail.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Kelas</b>
-                            </a>
-                        </li>
-                        <li>
                             <a class="active" href="./pembayaran.php">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="curentcolor" viewBox="0 0 24 24">
                                     <path d="M2 8v4.001h1V18H2v3h16l3 .001V21h1v-3h-1v-5.999h1V8L12 2 2 8zm4 10v-5.999h2V18H6zm5 0v-5.999h2V18h-2zm7 0h-2v-5.999h2V18zM14 8a2 2 0 1 1-4.001-.001A2 2 0 0 1 14 8z" />
@@ -76,12 +51,6 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                             <a href="./history.php">
                                 <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
                                 <b>Riwayat Transaksi</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./laporan.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Laporan</b>
                             </a>
                         </li>
                     </ul>

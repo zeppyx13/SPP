@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../config/php/backend.php';
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['petugas'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
@@ -46,29 +46,6 @@ $jmlS = count($siswa);
                             </a>
                         </li>
                         <li>
-                            <a href="./siswa.php"><img src="../assets/emoticon/svg/regular/bx-group.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Siswa</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./pegawai.php">
-                                <img src="../assets/emoticon/svg/regular/bx-buildings.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Petugas</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./tarif.php">
-                                <img src="../assets/emoticon/svg/regular/bx-table.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel SPP</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./kelas.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-user-detail.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Tabel Kelas</b>
-                            </a>
-                        </li>
-                        <li>
                             <a href="./pembayaran.php">
                                 <img src="../assets/emoticon/svg/solid/bxs-bank.svg" style="width:17px; height:17px; margin-right:5px;">
                                 <b>Pembayaran SPP</b>
@@ -78,12 +55,6 @@ $jmlS = count($siswa);
                             <a href="./history.php">
                                 <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
                                 <b>Riwayat Transaksi</b>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./laporan.php">
-                                <img src="../assets/emoticon/svg/solid/bxs-report.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Laporan</b>
                             </a>
                         </li>
                     </ul>

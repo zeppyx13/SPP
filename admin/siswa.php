@@ -35,7 +35,7 @@ $no = 1;
                         <li>
                             <a href="./">
                                 <img src="../assets/emoticon/svg/regular/bx-home-alt.svg" style="width:15px; height:15px; margin-right:5px;">
-                                <b>Home</b>
+                                <b>Beranda</b>
                             </a>
                         </li>
                         <li>
@@ -74,7 +74,7 @@ $no = 1;
                         <li>
                             <a href="./history.php">
                                 <img src="../assets/emoticon/svg/regular/bx-history.svg" style="width:15px; height:15px; margin-right:5px; fill:white;">
-                                <b>History Transaksi</b>
+                                <b>Riwayat Transaksi</b>
                             </a>
                         </li>
                         <li>
@@ -86,15 +86,12 @@ $no = 1;
                     </ul>
                 </div>
                 <div class="logout">
-                    <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>Logout</b></a>
+                    <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>kel</b></a>
                 </div>
             </div>
         </nav>
         <div class="nav-profile">
             <ul>
-                <li>
-
-                </li>
                 <li>
                     <div class="profile">
                         <div class="nama">
@@ -125,6 +122,7 @@ $no = 1;
                         <th>NISN</th>
                         <th>NIS</th>
                         <th>Nama Siswa</th>
+                        <th>Password</th>
                         <th>Kelas</th>
                         <th>Jurusan</th>
                         <th>Alamat</th>
@@ -141,6 +139,7 @@ $no = 1;
                             <td><?= $row["NISN"] ?></td>
                             <td><?= $row["Nis"] ?></td>
                             <td><?= $row["Nama_Siswa"] ?></td>
+                            <td><?= $row["Password"] ?></td>
                             <td><?= $row["kelas"] ?></td>
                             <td><?= $row["jurusan"] ?></td>
                             <td><?= $row["Alamat"] ?></td>

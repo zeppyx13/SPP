@@ -3,6 +3,7 @@ session_start();
 require '../../php/backend.php';
 $nis = $_GET['nis'];
 $bulan = $_GET['bulan'];
+$sisen = $_SESSION['level'];
 $bulanIndo = [
     '01' => 'Januari',
     '02' => 'Februari',
@@ -108,18 +109,22 @@ if (isset($_POST['add'])) {
                         </div>
                         <button onclick="return confirm('Yakin melakukan pembayaran siswa : <?= $siswa['Nama_Siswa'] ?> ?')" name="add" class="formbold-btn">Bayar</button>
                         <hr class="garis">
-                        <a class="back" href="<?php
-                                                if ($_SESSION['admin']) {
-                                                    echo '../../../admin/pembayaran.php';
-                                                } elseif ($_SESSION['petugas']) {
-                                                    echo '../../../petugas/pembayaran.php';
-                                                } else {
-                                                    echo '../../php/logout.php';
-                                                };
-                                                ?>">
-                            <p>
-                                <<< </p>
-                        </a>
+                        <?php if ($sisen == "admin") { ?>
+                            <a class="back" href="../../../admin/pembayaran.php">
+                                <p>
+                                    <<< </p>
+                            </a>
+                        <?php } elseif ($sisen == "petugas") { ?>
+                            <a class="back" href="../../../petugas/pembayaran.php">
+                                <p>
+                                    <<< </p>
+                            </a>
+                        <?php } else { ?>
+                            <a class="back" href="../../../config/php/logout.php">
+                                <p>
+                                    <<< </p>
+                            </a>
+                        <?php } ?>
                     </form>
                 </div>
             </div>
