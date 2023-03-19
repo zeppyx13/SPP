@@ -86,7 +86,7 @@ $no = 1;
                     </ul>
                 </div>
                 <div class="logout">
-                    <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>kel</b></a>
+                    <a href="../config/php/logout.php"><img src="../assets/emoticon/svg/regular/bx-log-out.svg" style="width:15px; height:15px; margin-right:5px;"><b>keluar</b></a>
                 </div>
             </div>
         </nav>
