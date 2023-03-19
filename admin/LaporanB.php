@@ -11,7 +11,47 @@ $mintahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl ASC')[0];
 $maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
 $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
 // 
-$query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join tb_kelas using(idkelas) inner join tb_pegawai using(idpegawai) order by idpembayaran DESC";
+if (isset($_POST["cari"])) {
+    if ($_POST['bulan'] == 'all' && $_POST['tahun'] == 'all' && $_POST['jurusan'] == 'all') {
+        // var_dump("pilih semua");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) ORDER BY No DESC");
+    } elseif ($_POST['tahun'] == 'all' && $_POST['jurusan'] == 'all') {
+        // var_dump("pilih bulan aja");
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE MONTH(pembayaran.Tgl) = '$bulanvald' ORDER BY No DESC");
+    } elseif ($_POST['bulan'] == 'all' && $_POST['jurusan'] == 'all') {
+        // var_dump("pilih tahun aja");
+        $tahunvald = $_POST['tahun'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' ORDER BY No DESC");
+    } elseif ($_POST['jurusan'] == 'all') {
+        // var_dump("pilih bulan dan tahun aja");
+        $tahunvald = $_POST['tahun'];
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' AND MONTH(pembayaran.Tgl) = '$bulanvald' ORDER BY No DESC");
+    } elseif ($_POST['bulan'] == 'all' && $_POST['tahun'] == 'all' && $_POST['jurusan'] != 'all') {
+        $jurusanvald = $_POST['jurusan'];
+        // var_dump("pilih jurusan aja");
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE jurusan = '$jurusanvald' ORDER BY No DESC");
+    } elseif ($_POST['bulan'] == 'all' && $_POST['tahun'] != 'all' && $_POST['jurusan'] != 'all') {
+        // var_dump("pilih jurusan dan tahun");
+        $tahunvald = $_POST['tahun'];
+        $jurusanvald = $_POST['jurusan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE jurusan = '$jurusanvald' AND YEAR(pembayaran.Tgl) = '$tahunvald'  ORDER BY No DESC");
+    } elseif ($_POST['bulan'] != 'all' && $_POST['tahun'] == 'all' && $_POST['jurusan'] != 'all') {
+        // var_dump("pilih jurusan dan bulan");
+        $jurusanvald = $_POST['jurusan'];
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE jurusan = '$jurusanvald' AND MONTH(pembayaran.Tgl) = '$bulanvald'  ORDER BY No DESC");
+    } else {
+        // var_dump("pilih menggunakan 3 fillter");
+        $jurusanvald = $_POST['jurusan'];
+        $tahunvald = $_POST['tahun'];
+        $bulanvald = $_POST['bulan'];
+        $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) WHERE YEAR(pembayaran.Tgl) = '$tahunvald' AND MONTH(pembayaran.Tgl) = '$bulanvald' AND jurusan = '$jurusanvald' ORDER BY No DESC");
+    }
+} else {
+    $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) ORDER BY No DESC");
+}
 // 
 ?>
 <!DOCTYPE html>
@@ -129,6 +169,7 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                 <div class="form-cari">
                     <form action="" name="formcri" method="POST">
                         <select id="bulan" name="bulan" class="select-bulan">
+                            <option selected value="all">-Semua Bulan-</option>
                             <option value="01">Januari</option>
                             <option value="02">Februari</option>
                             <option value="03">Maret</option>
@@ -143,11 +184,13 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             <option value="12">Desember</option>
                         </select>
                         <select name="tahun" class="select-tahun">
+                            <option selected value="all">-Semua Tahun</option>
                             <?php foreach ($years as $year) : ?>
                                 <option value="<?= $year; ?>"><?= $year; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <select name="jurusan" class="select-tahun">
+                            <option selected value="all">-Semua jurusan</option>
                             <?php foreach ($jurusan as $jurusan) : ?>
                                 <option value="<?= $jurusan['jurusan']; ?>"><?= $jurusan['jurusan']; ?></option>
                             <?php endforeach; ?>
@@ -159,118 +202,57 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             Cari
                         </button>
                     </form>
-                    <?php
-                    $jurusan = $_POST['jurusan'];
-                    $bulan = $_POST['bulan'];
-                    $siswa = "SELECT * FROM siswa inner join kelas using (idkelas) INNER JOIN tarif on kelas.idtarif = tarif.id WHERE jurusan='$jurusan'";
-                    ?>
                 </div>
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>NIS</th>
-                        <th>Nama Pegawai</th>
-                        <th>Kelas</th>
                         <th>Nama Siswa</th>
+                        <th>Nama petugas</th>
+                        <th>Kelas</th>
+                        <th>Jurusan</th>
+                        <th>Angkatan</th>
+                        <th>Tanggal pembayaran</th>
                         <th>Bulan</th>
-                        <th>Tahun Bayar</th>
-                        <th>keterangan</th>
-                        <th>Tanggal Bayar</th>
+                        <th>Tahun</th>
                         <th>Jumlah</th>
-                        <!-- SELECT * FROM pembayaran inner join siswa using(Nis) inner join petugas using(Nip) inner join kelas using(idkelas) -->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php
-                        $no = 1;
-                        $hasil = mysqli_query($konek, $siswa);
-                        while ($row = mysqli_fetch_assoc($hasil)) {
-                            $Nis = $row['Nis'];
-                            $tahunvald = $_POST['tahun'];
-                            $bulanvald = $_POST['bulan'];
-                            $jurusanvald = $_POST['jurusan'];
-                            $queryvald = mysqli_query($konek, "SELECT 
-                            YEAR(Tgl_Bayar) AS tahun,
-                            siswa.*,
-                            petugas.*,
-                            kelas.*,
-                            pembayaran.* 
-                            FROM pembayaran 
-                            inner join siswa using(Nis) 
-                            inner join petugas using(Nip) 
-                            inner join kelas using(idkelas) 
-                            WHERE Nis='$Nis' AND 
-                            MONTH(Tgl) = '$bulanvald' AND 
-                            YEAR(Tgl) = '$tahunvald' AND 
-                            jurusan = '$jurusanvald' 
-                            ORDER BY No DESC");
-                            $data = mysqli_fetch_assoc($queryvald);
-                            $keterangan = $data['keterangan'];
-                            $Nama_Siswa = $data['Nama_Siswa'];
-                            $Nama_Petugas = $data['Nama_Petugas'];
-                        ?>
-                            <td><?= $no++ ?></td>
-                            <td><?= $row['Nis']; ?></td>
-                            <td>
-                                <?php
-                                if ($Nama_Petugas > 0) {
-                                    echo "$Nama_Petugas";
-                                } else {
-                                    echo "-";
-                                }
-                                ?>
-                            </td>
-                            <td><?= $row['jurusan']; ?></td>
-                            <td><?= $row['Nama_Siswa']; ?></td>
-                            <td><?= $bulanvald ?></td>
-                            <td>
-                                <?php if (@$data) {
-                                    $tahun = $data['tahun'];
-                                    echo $data['tahun'];
-                                } else {
-                                    echo "-";
-                                } ?>
-                                <?php
-                                if ($keterangan) {
-                                    echo "<td><strong>$keterangan</strong></td>";
-                                } else {
-                                    echo "<td><strong>Belum Lunas</strong></td>";
-                                } ?>
-                            </td>
-                            <td>
-                                <?php if (@$data) {
-                                    echo $data['Tgl_Bayar'];
-                                } else {
-                                    echo "-";
-                                } ?>
-                            </td>
-                            <td>
-                                <?php if (@$data) {
-                                    echo "Rp. ", number_format($data['Jumlah'], 0, ',', '.');
-                                } else {
-                                    echo "Rp. -", number_format($row['Nominal'], 0, ',', '.');
-                                } ?>
-                            </td>
-                            <?php
-                            $total_ang += $data['Jumlah'];
-                            $total_min += $row['Nominal'];
-                            $total_all = $total_min - $total_ang;
-                            ?>
-                    </tr>
-                <?php } ?>
-                <tr>
-                    <td colspan="9" style="text-align: right; padding:5px 40px 5px 0px; font-size:10px;">
-                        <h3><b>TOTAL BAYAR :</b></h3>
-                    </td>
-                    <td>Rp.<?= number_format($total_ang, 0, ',', '.') ?></td>
-                </tr>
-                <tr>
-                    <td colspan="9" style="text-align: right; padding:5px 40px 5px 0px; font-size:10px;">
-                        <h3><b>TOTAL KURANG :</b></h3>
-                    </td>
-                    <td>Rp.<?= number_format($total_all, 0, ',', '.') ?></td>
-                </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($query as $row) :
+                        $bulanIndo = [
+                            '1' => 'Januari',
+                            '2' => 'Februari',
+                            '3' => 'Maret',
+                            '4' => 'April',
+                            '5' => 'Mei',
+                            '6' => 'Juni',
+                            '7' => 'Juli',
+                            '8' => 'Agustus',
+                            '9' => 'September',
+                            '10' => 'Oktober',
+                            '11' => 'November',
+                            '12' => 'Desember',
+                        ];
+                        $vbulan = $row['bulan'];
+                        $bulan = $bulanIndo["$vbulan"];
+                    ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?= $row['Nis'] ?></td>
+                            <td><?= $row['Nama_Siswa'] ?></td>
+                            <td><?= $row['Nama_Petugas'] ?> </td>
+                            <td><?= $row['kelas'] ?></td>
+                            <td><?= $row['jurusan'] ?></td>
+                            <td><?= $row['Angkatan'] ?></td>
+                            <td><?= $row['Tgl_Bayar'] ?></td>
+                            <td><?= $bulan ?></td>
+                            <td><?= $row['tahun'] ?></td>
+                            <td><?= $row['Jumlah'] ?></td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 <tbody>
             </table>
         </div>
