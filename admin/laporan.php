@@ -5,10 +5,12 @@ if (!isset($_SESSION['admin'])) {
     echo "<script>alert('akses ilegal');window.location='../login.php'</script>";
     exit;
 }
+$nama = $_SESSION['nama'];
 $jurusan = query("SELECT DISTINCT jurusan FROM kelas");
 $mintahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl ASC')[0];
 $maxtahun = query('SELECT Year(Tgl) FROM pembayaran ORDER BY Tgl DESC')[0];
 $years = range($mintahun["Year(Tgl)"], $maxtahun["Year(Tgl)"]);
+// 
 if (isset($_POST["cari"])) {
     if ($_POST['bulan'] == 'all' && $_POST['tahun'] == 'all' && $_POST['jurusan'] == 'all') {
         // var_dump("pilih semua");
@@ -50,7 +52,7 @@ if (isset($_POST["cari"])) {
 } else {
     $query =  query("SELECT MONTH(pembayaran.Tgl) as bulan ,Year(pembayaran.Tgl) as tahun, IdPembayaran, Jumlah,Tgl,Nama_Petugas,Nis, siswa.Nama_Siswa , siswa.idkelas, pembayaran.Jumlah, pembayaran.Angkatan, kelas.kelas,pembayaran.Tgl_Bayar,jurusan FROM pembayaran inner join siswa using(Nis) inner join kelas using(idkelas) ORDER BY No DESC");
 }
-$nama = $_SESSION['nama'];
+// 
 ?>
 <!DOCTYPE html>
 <html lang="en">
