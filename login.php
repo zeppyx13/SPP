@@ -17,10 +17,10 @@ session_start();
 	<div class="container" id="container">
 		<div class="form-container sign-in-container">
 			<form method="POST" action="./config/php/proseslogin.php">
-				<h1 style="margin-bottom: 30px;">Sign in</h1>
+				<h2 style="margin-bottom: 30px;">Hallo, Selamat Datang</h2>
 				<input required autocomplete="off" type="number" name="id" placeholder="NIS/NIP" />
 				<input required autocomplete="off" type="password" name="pw" placeholder="Password" />
-				<button type="submit" name="login">Sign In</button>
+				<button type="submit" name="login">Masuk</button>
 			</form>
 		</div>
 		<div class="overlay-container">

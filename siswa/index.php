@@ -84,9 +84,14 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = '$nis'";
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="jdl"><b>NISN</b></td>
+                        <td class="jdl"><b>NIS</b></td>
                         <td class="titik2">:</td>
                         <td class="hasil"><?= $row['Nis']; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="jdl"><b>NISN</b></td>
+                        <td class="titik2">:</td>
+                        <td class="hasil"><?= $row['NISN']; ?></td>
                     </tr>
                     <tr>
                         <td class=" jdl"><b>Nama</b></td>
@@ -96,7 +101,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = '$nis'";
                     <tr>
                         <td class="jdl"><b>Kelas</b></td>
                         <td class="titik2">:</td>
-                        <td class="hasil"><?= $row['kelas']; ?></td>
+                        <td class="hasil"><?= $row['kelas'], ' ', $row['jurusan'] ?></td>
                     </tr>
                 <tbody>
             </table>
