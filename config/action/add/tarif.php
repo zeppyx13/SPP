@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../../php/backend.php';
-$years = range(2006, date('Y') + 17);
+$years = range(date('Y') - 3, date('Y') + 3);
 if (isset($_POST['add'])) {
     if (AddTarif($_POST) > 0) {
         echo "<script>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../../php/backend.php';
-$angkatan = query("SELECT * from tarif");
 if (isset($_POST['add'])) {
     if (AddPegawai($_POST) > 0) {
         echo "<script>

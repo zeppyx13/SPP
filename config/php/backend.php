@@ -200,3 +200,16 @@ function Editkelas($data)
   mysqli_query($konek, $query);
   return mysqli_affected_rows($konek);
 }
+function EditPetugas($data)
+{
+  global $konek;
+  $nip = $data['nip'];
+  $tlp = $data['tlp'];
+  $jabatan = $data['jabatan'];
+  $nama = $data['nama'];
+  $pw = $data['password'];
+  $alamat = $data['alamat'];
+  $query = "UPDATE petugas SET Nama_Petugas = '$nama', Password='$pw', Jabatan='$jabatan', tlp='$tlp', Alamat='$alamat' WHERE NIP = '$nip'";
+  mysqli_query($konek, $query);
+  return mysqli_affected_rows($konek);
+}
