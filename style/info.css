@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/font/Montserrat-VariableFont_wght.ttf');
+}
+
 body {
+    font-family: 'Montserrat';
     overflow-y: hidden;
     overflow-x: hidden;
 }

@@ -4,7 +4,13 @@
   --text: black;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/font/Montserrat-VariableFont_wght.ttf');
+}
+
 * {
+  font-family: 'Montserrat';
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
