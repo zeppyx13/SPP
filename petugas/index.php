@@ -96,7 +96,7 @@ $jmlS = count($siswa);
                 <h2 class="no"><b><?= $jmlS ?></b></h2>
             </div>
             <div class="info info-2">
-                <h2>Transaksi bulain ini:</h2>
+                <h2>Transaksi bulan ini:</h2>
                 <h2 class="no"><b> <?= $Ctang ?></b></h2>
             </div>
             <div class="info info-3">
