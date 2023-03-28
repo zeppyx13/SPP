@@ -128,7 +128,7 @@ $no = 1;
                         <th>kelas</th>
                         <th>Jurusan</th>
                         <th>Nominal</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

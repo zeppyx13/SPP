@@ -121,7 +121,7 @@ $no = 1;
                         <th class="row-angkatan">Angkatan</th>
                         <th>tipe</th>
                         <th>Nominal</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

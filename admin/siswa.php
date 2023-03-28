@@ -129,7 +129,7 @@ $no = 1;
                         <th>No telp</th>
                         <th>Angkatan</th>
                         <th>Nominal</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

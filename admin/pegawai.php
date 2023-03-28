@@ -127,7 +127,7 @@ $data = query($query);
                         <th>Alamat</th>
                         <th>Jabatan</th>
                         <th>Pssword</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
