@@ -195,7 +195,7 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                     </thead>
                     <tbody>
                         <?php
-                        $awaltempo = date("Y-07-d");
+                        $awaltempo = date("Y-07-28");
                         $bulanIndo = [
                             '01' => 'Januari',
                             '02' => 'Februari',
@@ -235,14 +235,14 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                 // global $tahunBayar;
                                 $Dbayar = query("SELECT * from siswa INNER JOIN kelas USING(idkelas) INNER JOIN tarif on tarif.id = kelas.idtarif WHERE Nis='$nis'")[0];
                                 // var_dump($bulanvald, $nis, $tahunBayar);
-                                if ($i < 7) {
+                                if ($i <= 5) {
                                 ?>
                                     <td><?= $tahunBayar = (int)$Dbayar['Angkatan']; ?></td>
-                                <?php } elseif ($i > 6 && $i < 19) { ?>
+                                <?php } elseif ($i >= 6 && $i <= 17) { ?>
                                     <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 1; ?></td>
-                                <?php } elseif ($i > 18 && $i < 31) { ?>
+                                <?php } elseif ($i >= 18 && $i <= 29) { ?>
                                     <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 2; ?></td>
-                                <?php } elseif ($i > 30 && $i < 37) { ?>
+                                <?php } elseif ($i >= 30 && $i < 37) { ?>
                                     <td><?= $tahunBayar = (int)$Dbayar['Angkatan'] + 3; ?></td>
                                 <?php } ?>
                                 <td><?= $bulan ?></td>
@@ -255,7 +255,6 @@ $query = "SELECT * FROM siswa inner join kelas WHERE Nis = ''";
                                 $jumlah  = number_format($hasil['Jumlah'], 0, ',', '.');
                                 $fnominal = number_format($nominal['nominal'], 0, ',', '.');
                                 // $nominal = $nominal['nominal'];
-
                                 ?>
                                 <td><?php
                                     $tgl = $hasil['Tgl_Bayar'];

@@ -77,7 +77,7 @@ if (isset($_POST['add'])) {
                                 <input value="<?= $petugas['Alamat'] ?>" placeholder="Alamat" type="text" name="alamat" id="alamat" class="formbold-form-input" autocomplete="off" required />
                             </div>
                         </div>
-                        <button name="add" class="formbold-btn">Tambahkan</button>
+                        <button name="add" class="formbold-btn">Ubah</button>
                         <hr class="garis">
                         <a class="back" href="<?php
                                                 if ($_SESSION['admin']) {
