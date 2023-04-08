@@ -178,8 +178,8 @@ if (isset($_POST["cari"])) {
                         <th>Kelas</th>
                         <th>Angkatan</th>
                         <th>Tanggal pembayaran</th>
-                        <th>Bulan</th>
-                        <th>Tahun</th>
+                        <th>Bulan Dibayar</th>
+                        <th>Tahun Dibayar</th>
                         <th>Jumlah</th>
                     </tr>
                 </thead>

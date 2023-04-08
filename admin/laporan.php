@@ -143,12 +143,13 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             <option value="11">November</option>
                             <option value="12">Desember</option>
                         </select>
-                        <select name="tahun" class="select-tahun">
+
+                        <select id="tahun" name="tahun" class="select-tahun">
                             <?php foreach ($years as $year) : ?>
                                 <option value="<?= $year; ?>"><?= $year; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <select name="jurusan" class="select-tahun">
+                        <select id="jurusan" name="jurusan" class="select-tahun">
                             <?php foreach ($jurusan as $jurusan) : ?>
                                 <option value="<?= $jurusan['jurusan']; ?>"><?= $jurusan['jurusan']; ?></option>
                             <?php endforeach; ?>
