@@ -177,7 +177,7 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                         <th>Kelas</th>
                         <th>Nama Siswa</th>
                         <th>Bulan</th>
-                        <th>Tahun Bayar</th>
+                        <th>Tahun Dibayar</th>
                         <th>keterangan</th>
                         <th>Tanggal Bayar</th>
                         <th>Jumlah</th>
@@ -192,9 +192,25 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             $Nis = $row['Nis'];
                             $tahunvald = $_POST['tahun'];
                             $bulanvald = $_POST['bulan'];
+                            $bulanIndo = [
+                                '01' => 'Januari',
+                                '02' => 'Februari',
+                                '03' => 'Maret',
+                                '04' => 'April',
+                                '05' => 'Mei',
+                                '06' => 'Juni',
+                                '07' => 'Juli',
+                                '08' => 'Agustus',
+                                '09' => 'September',
+                                '10' => 'Oktober',
+                                '11' => 'November',
+                                '12' => 'Desember',
+                            ];
+                            $vbulan =  $bulanvald;
+                            $bulan = $bulanIndo["$vbulan"];
                             $jurusanvald = $_POST['jurusan'];
                             $queryvald = mysqli_query($konek, "SELECT 
-                            YEAR(Tgl_Bayar) AS tahun,
+                            YEAR(Tgl) AS tahun,
                             siswa.*,
                             petugas.*,
                             kelas.*,
@@ -217,7 +233,7 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             <td><?= $row['Nis']; ?></td>
                             <td>
                                 <?php
-                                if ($Nama_Petugas > 0) {
+                                if ($Nama_Petugas) {
                                     echo "$Nama_Petugas";
                                 } else {
                                     echo "-";
@@ -226,7 +242,7 @@ $query = "SELECT * FROM tb_pembayaran inner join tb_siswa using(nis) inner join 
                             </td>
                             <td><?= $row['jurusan']; ?></td>
                             <td><?= $row['Nama_Siswa']; ?></td>
-                            <td><?= $bulanvald ?></td>
+                            <td><?= $bulan ?></td>
                             <td>
                                 <?php if (@$data) {
                                     $tahun = $data['tahun'];
