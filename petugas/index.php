@@ -8,9 +8,9 @@ if (!isset($_SESSION['petugas'])) {
 $tgl = date('m');
 $nama = $_SESSION['nama'];
 $siswa = query("SELECT * FROM Siswa");
-$transaksi = query("SELECT Tgl FROM pembayaran WHERE MONTH(Tgl)='$tgl'");
+$transaksi = query("SELECT Tgl FROM pembayaran WHERE MONTH(Tgl_Bayar)='$tgl'");
 $Ctang = count($transaksi);
-$pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran WHERE MONTH(Tgl)='$tgl'")[0];
+$pendapatan = query("SELECT SUM(Jumlah) as total from pembayaran WHERE MONTH(Tgl_Bayar)='$tgl'")[0];
 $apend =  $pendapatan["total"];
 $fpendapatan = number_format($apend, 0, ',', '.');
 $jmlS = count($siswa);
